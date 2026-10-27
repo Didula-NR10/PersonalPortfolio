@@ -68,9 +68,6 @@ html[data-palette] .portfolio-home .galaxy-navigation .navigation-theme-toggle {
 html[data-palette] .portfolio-home .home-hero { background: radial-gradient(ellipse 42% 52% at 15% 50%, var(--theme-haze), transparent 83%), radial-gradient(ellipse 42% 52% at 85% 50%, var(--theme-haze), transparent 83%), var(--palette-hero-bg); color: var(--theme-text); }
 html[data-palette] .portfolio-home .home-hero-background::before { background: radial-gradient(ellipse 30% 38% at 15% 45%, var(--palette-hero-bg), transparent 100%), radial-gradient(ellipse 31% 38% at 84% 45%, var(--palette-hero-bg), transparent 100%); }
 html[data-palette] .portfolio-home .home-hero-background::after { background: linear-gradient(90deg, transparent, var(--palette-hero-bg) 40% 60%, transparent); }
-html[data-palette] .portfolio-home .home-designer-system { color: var(--theme-accent); }
-html[data-palette] .portfolio-home .home-design-color { stroke: var(--palette-gradient-start); }
-html[data-palette] .portfolio-home .home-design-color--second { stroke: var(--palette-circuit-active); }
 html[data-palette] .portfolio-home .home-coder-system { --pcb-trace: var(--palette-circuit-base); --pcb-secondary: var(--theme-path); --pcb-body: var(--palette-circuit-active); --pcb-head: var(--palette-circuit-glow); --pcb-glow: var(--palette-circuit-glow); }
 html[data-palette] .portfolio-home .home-hero-copy h1,
 html[data-palette] .portfolio-home .home-hero-copy h2 { color: var(--theme-text); }
