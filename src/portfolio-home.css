@@ -1,14 +1,14 @@
-.portfolio-home {
+.galaxy-page.portfolio-home {
   font-family: Inter, Arial, sans-serif;
   color: #fff;
   background: linear-gradient(180deg, #071522, #091b2b 55%, #071522);
+  overflow: clip;
 }
 
 .portfolio-home #about,
 .portfolio-home #education,
 .portfolio-home #services,
-.portfolio-home #projects,
-.portfolio-home #references { scroll-margin-top: 0; }
+.portfolio-home #projects { scroll-margin-top: 0; }
 
 /* Keep the original star field at its original viewport size. */
 .portfolio-home > .galaxy-background {

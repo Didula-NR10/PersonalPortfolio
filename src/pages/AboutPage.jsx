@@ -1,126 +1,132 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { ArrowRight, Atom, BrainCircuit, Cloud, Code2, Lightbulb, Moon, Rocket, ShieldCheck, Sun, Users } from 'lucide-react';
-import { gsap } from 'gsap';
+import { useEffect, useRef } from 'react';
+import { Github, Linkedin, Mail, Phone } from 'lucide-react';
 import GalaxyNavigation from '../components/GalaxyNavigation';
-import HolographicPortrait from '../components/HolographicPortrait';
-import ObservatoryScene from '../components/ObservatoryScene';
-import ProfileDetails from '../components/ProfileDetails';
 import PortfolioFooter from '../components/PortfolioFooter';
-import '../about-orbital.css';
+import { profileImageUrl, socialLinks } from '../config';
+import '../about-reconstruction.css';
 
-const indicators = [
-  { label: '01 / SOFTWARE', title: 'Engineering', detail: 'Building reliable digital solutions.', Icon: Code2 },
-  { label: '02 / CLOUD', title: 'Architecture', detail: 'Exploring scalable infrastructure.', Icon: Cloud },
-  { label: '03 / INTELLIGENCE', title: 'AI', detail: 'Learning intelligent systems.', Icon: BrainCircuit },
-  { label: '04 / SECURITY', title: 'Cybersecurity', detail: 'Designing with protection in mind.', Icon: ShieldCheck }
+const contactItems = [
+  { label: 'Email', value: socialLinks.email || 'Email to add', href: socialLinks.email ? `mailto:${socialLinks.email}` : '', Icon: Mail },
+  { label: 'Phone', value: 'Phone number to add', href: '', Icon: Phone },
+  { label: 'LinkedIn', value: socialLinks.linkedin || 'Profile link to add', href: socialLinks.linkedin, Icon: Linkedin },
+  { label: 'GitHub', value: socialLinks.github || 'Profile link to add', href: socialLinks.github, Icon: Github }
 ];
 
-const values = [
-  { title: 'Curiosity', detail: 'Turning questions into solutions through continuous learning.', Icon: Lightbulb },
-  { title: 'Impact', detail: 'Building technology that solves real-world problems.', Icon: Rocket },
-  { title: 'Innovation', detail: 'Exploring new ideas at the intersection of technology and creativity.', Icon: Atom },
-  { title: 'Growth', detail: 'Evolving through challenges, collaboration, and open-mindedness.', Icon: Users }
+const technologies = [
+  { name: 'PHP', mark: 'PHP', tone: 'php' },
+  { name: 'JavaScript', mark: 'JS', tone: 'javascript' },
+  { name: 'React', mark: 'Re', tone: 'react' },
+  { name: 'Laravel', mark: 'L', tone: 'laravel' },
+  { name: 'Node.js', mark: 'N', tone: 'node' },
+  { name: 'MySQL', mark: 'My', tone: 'mysql' }
 ];
 
-function AboutContent({ light, setLight }) {
-  const heroRef = useRef(null);
-  const revealedRef = useRef(false);
-  const [active, setActive] = useState(false);
+function ContactItem({ label, value, href, Icon }) {
+  const detail = href
+    ? <a href={href} target={href.startsWith('mailto:') ? undefined : '_blank'} rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}>{value}</a>
+    : <span>{value}</span>;
+  return <li className="about-contact-item" aria-label={`${label}: ${value}`}>
+    <span className="about-contact-icon"><Icon size={19} strokeWidth={1.7} aria-hidden="true" /></span>
+    <span className="about-contact-text">{detail}</span>
+  </li>;
+}
 
-  useLayoutEffect(() => {
-    const hero = heroRef.current;
-    if (!hero) return undefined;
-    let context;
-    const reveal = () => {
-      if (revealedRef.current || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      revealedRef.current = true;
-      context = gsap.context(() => {
-        gsap.timeline({ defaults: { ease: 'power2.out' } })
-          .from('.about-visual-card', { y: 20, opacity: 0, duration: .72 }, .15)
-          .from('.about-summary-card', { y: 18, opacity: 0, duration: .7 }, .3)
-          .from('.orbital-indicator', { y: 10, opacity: 0, duration: .42, stagger: .08 }, .75)
-          .from('.orbital-side', { y: 18, opacity: 0, duration: .68 }, .6)
-          .from('.orbital-focus-item', { y: 10, opacity: 0, duration: .35, stagger: .07 }, .9)
-          .from('.orbital-values', { y: 16, opacity: 0, duration: .65 }, 1)
-          .from('.orbital-value', { y: 8, opacity: 0, duration: .32, stagger: .07 }, 1.2);
-      }, hero);
-    };
-    if (!('IntersectionObserver' in window)) {
-      setActive(true);
-      reveal();
-      return () => context?.revert();
-    }
-    const observer = new IntersectionObserver(([entry]) => {
-      setActive(entry.isIntersecting);
-      if (entry.isIntersecting) reveal();
-    }, { threshold: .08 });
-    observer.observe(hero);
-    return () => { observer.disconnect(); context?.revert(); };
+function AboutDecorations() {
+  return <svg className="about-decorative-lines" viewBox="0 0 1200 1600" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
+    <path d="M 620 -35 C 640 75 700 85 713 165 C 728 247 676 304 733 384 C 787 458 847 456 900 505 C 985 580 985 653 1074 610 C 1130 583 1152 526 1230 560" />
+    <path d="M 686 -45 C 674 65 648 123 670 167 C 697 219 766 208 839 236 C 952 281 1002 362 1019 481 C 1033 572 1001 639 917 613 C 837 589 840 515 783 476" />
+    <path d="M 780 175 C 901 211 978 275 1002 381 C 1046 570 1030 625 1198 460" />
+    <path d="M 1195 1115 C 1107 1134 1033 1194 1004 1292 C 974 1395 1033 1497 1075 1610" />
+    <path d="M 1240 1180 C 1135 1215 1093 1280 1040 1375 C 994 1463 1008 1515 1014 1615" />
+  </svg>;
+}
+
+export function AboutSection({ embedded = true }) {
+  const sectionRef = useRef(null);
+  const MainHeading = embedded ? 'h2' : 'h1';
+  const DetailHeading = embedded ? 'h3' : 'h2';
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || !('IntersectionObserver' in window)) return undefined;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    const targets = section.querySelectorAll('.about-hero, .about-info-panel');
+    targets.forEach(target => observer.observe(target));
+    section.classList.add('about-can-reveal');
+    return () => observer.disconnect();
   }, []);
 
-  return <section className={`observatory-hero${active ? ' is-active' : ''}`} ref={heroRef} aria-labelledby="about-title">
-    <ObservatoryScene />
-    <button className="orbital-theme-toggle" type="button" aria-label={light ? 'Switch About to dark mode' : 'Switch About to light mode'} aria-pressed={light} onClick={() => setLight(!light)}>
-      {light ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
-      <span>{light ? 'Light' : 'Dark'}</span>
-    </button>
-    <div className="about-composition">
-      <section className="about-visual-card" aria-label="Didula identity portrait">
-        <div className="orbital-identity-top"><p>// PROFILE 001</p><span>01</span></div>
-        <div className="observatory-hologram"><HolographicPortrait /></div>
-        <div className="about-visual-caption"><strong>DIDULA</strong><span>SOFTWARE DEVELOPER</span></div>
-      </section>
+  return <section className="about-reconstruction" id="about" ref={sectionRef} aria-labelledby="about-title">
+    <AboutDecorations />
+    <div className="about-hero">
+      <MainHeading className="about-title-capsule" id="about-title">About me</MainHeading>
+      <div className="about-hero-copy">
+        <div className="about-introduction">
+          <p className="about-greeting">Hi!</p>
+          <p>I'm Didula, a Computer Science student and software developer focused on useful, well-designed systems.</p>
+          <p>I explore AI engineering, cybersecurity engineering, and software and cloud architecture as I work toward becoming a software, cloud, or enterprise architect.</p>
+        </div>
+        <div className="about-contact" aria-labelledby="about-contact-title">
+          <DetailHeading id="about-contact-title">Contact</DetailHeading>
+          <ul>{contactItems.map(item => <ContactItem key={item.label} {...item} />)}</ul>
+        </div>
+      </div>
+      <div className="about-portrait-area">
+        <div className="about-portrait-light" aria-hidden="true" />
+        <div className="about-portrait-frame">
+          <img src={profileImageUrl} alt="Portrait of Didula" width="270" height="385" loading="eager" decoding="sync" fetchPriority="high" />
+        </div>
+      </div>
+    </div>
 
-      <section className="about-summary-card" aria-labelledby="about-title">
-        <div className="orbital-intro-heading">
-          <div className="orbital-summary-top"><span>// ABOUT THE EXPLORER</span><small>TRANSMISSION 002</small></div>
-          <h1 id="about-title">The mind behind<br />the <em>universe.</em></h1>
+    <div className="about-info-panel">
+      <div className="about-info-grid">
+        <div className="about-info-column">
+          <section className="about-info-group about-info-education" aria-labelledby="about-education-title">
+            <div className="about-info-heading-row"><DetailHeading id="about-education-title">Education</DetailHeading><span className="about-period-pill">Period to add</span></div>
+            <p>Institution and program to add</p>
+          </section>
+          <section className="about-info-group about-info-technology" aria-labelledby="technologies-title">
+            <DetailHeading id="technologies-title">Technical skill</DetailHeading>
+            <ul className="about-technology-list" aria-label="Technologies used in portfolio projects">
+              {technologies.map(({ name, mark, tone }) => <li key={name} aria-label={name}><span className={`about-technology-mark about-technology-mark--${tone}`} aria-hidden="true">{mark}</span></li>)}
+            </ul>
+          </section>
+          <section className="about-info-group about-info-interest" aria-labelledby="areas-title">
+            <DetailHeading id="areas-title">Interest</DetailHeading>
+            <div className="about-inline-pair"><span>Artificial Intelligence</span><span>Cybersecurity &amp; Cloud</span></div>
+          </section>
         </div>
-        <div className="orbital-intro-body">
-          <p>I'm Didula, a software developer drawn to the space where engineering, cloud architecture, AI, and cybersecurity meet.</p>
-          <p>I explore how complex systems connect, scale, and stay secure — turning curiosity into technology that matters.</p>
+        <div className="about-info-column">
+          <section className="about-info-group about-info-soft" aria-labelledby="soft-skills-title">
+            <DetailHeading id="soft-skills-title">Soft skill</DetailHeading>
+            <div className="about-detail-columns"><div>Teamwork<br />Communication</div><div>Critical Thinking<br />Time Management</div></div>
+          </section>
+          <section className="about-info-group about-info-skills" aria-labelledby="competencies-title">
+            <DetailHeading id="competencies-title">Skill set</DetailHeading>
+            <div className="about-detail-columns"><div>Software design<br />Application development<br />Database design</div><div>Web development<br />System analysis<br />Security awareness</div></div>
+          </section>
+          <section className="about-info-group about-info-language" aria-labelledby="languages-title">
+            <DetailHeading id="languages-title">Language</DetailHeading>
+            <div className="about-inline-pair"><span>Languages to add</span></div>
+          </section>
         </div>
-        <div className="orbital-indicators" aria-label="Engineering interests">
-          {indicators.map(({ label, title, detail, Icon }) => <div className="orbital-indicator" key={title}>
-            <Icon size={21} strokeWidth={1.6} aria-hidden="true" />
-            <span>{label}</span>
-            <strong>{title}</strong>
-            <small>{detail}</small>
-            <i aria-hidden="true" />
-          </div>)}
-        </div>
-        <a className="about-scroll orbital-journey" href="#journey">EXPLORE MY JOURNEY <ArrowRight size={18} aria-hidden="true" /></a>
-      </section>
-
-      <ProfileDetails />
-
-      <section className="orbital-values" aria-labelledby="about-values-title">
-        <p className="orbital-panel-label" id="about-values-title">// WHAT DRIVES ME</p>
-        <div className="orbital-values-grid">
-          {values.map(({ title, detail, Icon }) => <div className="orbital-value" key={title}>
-            <span className="orbital-value-icon"><Icon size={27} strokeWidth={1.5} aria-hidden="true" /></span>
-            <div><strong>{title}</strong><p>{detail}</p></div>
-          </div>)}
-        </div>
-      </section>
+      </div>
     </div>
   </section>;
 }
 
-function AboutExperience({ embedded = false }) {
-  const [light, setLight] = useState(() => {
-    try { return window.localStorage.getItem('about-theme') === 'light'; } catch { return false; }
-  });
-  useEffect(() => {
-    try { window.localStorage.setItem('about-theme', light ? 'light' : 'dark'); } catch { /* Storage may be unavailable. */ }
-  }, [light]);
-  const Tag = embedded ? 'section' : 'main';
-  return <Tag className="about-page about-one-page about-orbital" id="about" data-theme={light ? 'light' : 'dark'} aria-label="About Didula">
-    {!embedded && <GalaxyNavigation page="about" theme={light ? 'light' : 'dark'} />}
-    <AboutContent light={light} setLight={setLight} />
-    {!embedded && <PortfolioFooter />}
-  </Tag>;
+export default function AboutPage() {
+  return <main className="galaxy-page about-page-shell">
+    <GalaxyNavigation page="about" />
+    <AboutSection embedded={false} />
+    <PortfolioFooter />
+  </main>;
 }
-
-export function AboutSection() { return <AboutExperience embedded />; }
-export default function AboutPage() { return <AboutExperience />; }

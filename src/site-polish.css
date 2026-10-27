@@ -10,6 +10,12 @@
 html { scroll-behavior: smooth; }
 body { font-family: Inter, Arial, sans-serif; }
 
+.portfolio-empty-section {
+  position: relative;
+  min-height: 100svh;
+  background: #050816;
+}
+
 .portfolio-intro h1,
 .portfolio-profile-heading h2,
 .portfolio-focus-list h3,
@@ -44,8 +50,7 @@ body { font-family: Inter, Arial, sans-serif; }
 .portfolio-home > #about,
 .portfolio-home > #education,
 .portfolio-home > #services,
-.portfolio-home > #projects,
-.portfolio-home > #references { box-shadow: inset 0 1px var(--site-rule); }
+.portfolio-home > #projects { box-shadow: inset 0 1px var(--site-rule); }
 
 .portfolio-footer {
   position: relative;

@@ -31,8 +31,10 @@
 .education-timeline-marker h3 { margin: 0; color: #f1f5f9; font-size: clamp(23px, 2.4vw, 30px); font-weight: 750; line-height: 1.1; text-transform: uppercase; }
 .education-timeline-stage { max-width: 105px; margin-top: 5px; color: #9bb4cc; font-size: 10px; line-height: 1.5; letter-spacing: .07em; text-transform: uppercase; }
 .education-timeline-content { flex: 1; min-width: 0; }
-.education-timeline-track { position: absolute; z-index: 0; top: 31px; left: 34px; width: 1px; overflow: hidden; background: rgba(103,232,249,.27); mask-image: linear-gradient(to bottom, transparent, #000 5%, #000 94%, transparent); }
-.education-timeline-beam { position: absolute; top: 0; left: 0; right: 0; width: 1px; background: linear-gradient(to bottom, #67e8f9, #3b82f6 62%, #67e8f9); box-shadow: 0 0 9px rgba(103,232,249,.8); }
+.education-timeline-track { position: absolute; z-index: 0; top: 31px; bottom: 0; left: 30px; width: 8px; height: calc(100% - 31px); overflow: visible; pointer-events: none; }
+.education-timeline-track path { fill: none; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.education-timeline-track-base { stroke: rgba(103,232,249,.27); }
+.education-timeline-track-progress { stroke: #67e8f9; stroke-linecap: round; filter: drop-shadow(0 0 5px rgba(103,232,249,.9)); }
 .portfolio-education .education-card {
   position: relative;
   min-height: 204px;
@@ -68,7 +70,7 @@
   .education-timeline-marker { top: 140px; flex-basis: 46px; }
   .education-timeline-dot { width: 18px; height: 18px; margin: 6px 0 0 12px; border-width: 3px; }
   .education-timeline-label { display: none; }
-  .education-timeline-track { left: 21px; top: 38px; }
+  .education-timeline-track { left: 17px; top: 38px; height: calc(100% - 38px); }
   .education-card-type { display: none; }
   .education-card-copy { width: min(75%, 450px); }
   .portfolio-education .education-card { min-height: 195px; padding: 18px 19px 20px 25px; }
@@ -80,7 +82,7 @@
   .education-timeline-entry { gap: 7px; }
   .education-timeline-marker { flex-basis: 30px; }
   .education-timeline-dot { margin-left: 5px; }
-  .education-timeline-track { left: 14px; }
+  .education-timeline-track { left: 10px; }
   .portfolio-education .education-card { min-height: 208px; padding: 18px 17px 18px 22px; }
   .education-card-image { background-size: auto 300%; background-position-x: 62%; }
   .portfolio-education .education-card::before { background: linear-gradient(90deg, #05101f 0%, rgba(5,16,31,.9) 55%, rgba(5,16,31,.4) 100%); }

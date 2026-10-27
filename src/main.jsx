@@ -3,12 +3,16 @@ import { createRoot } from 'react-dom/client';
 import PortfolioHome from './pages/PortfolioHome';
 import AboutPage from './pages/AboutPage';
 import JourneyGateway from './pages/JourneyGateway';
+import { ThemeProvider } from './theme';
+import PaletteSwitcher from './components/PaletteSwitcher';
 import './tailwind.css';
 import './galaxy-page.css';
-import './about.css';
-import './about-cards.css';
 import './portfolio-theme.css';
 import './site-polish.css';
+import './light-mode.css';
+import './cohesive-theme.css';
+import './home-reconstruction.css';
+import './palette-system.css';
 
 const resolvePage = hash => ['story', 'mindset', 'exploration', 'vision'].includes(hash) ? 'about' : hash === 'journey' ? 'journey' : 'home';
 const sectionTitles = {
@@ -17,7 +21,6 @@ const sectionTitles = {
   education: 'Education | Didula',
   services: 'Services | Didula',
   projects: 'Projects | Didula',
-  references: 'References | Didula',
   'project-list': 'Projects | Didula',
   journey: 'Flight Path | Didula'
 };
@@ -54,4 +57,4 @@ function App() {
   return <PortfolioHome />;
 }
 
-createRoot(document.getElementById('root')).render(<App />);
+createRoot(document.getElementById('root')).render(<ThemeProvider><App /><PaletteSwitcher /></ThemeProvider>);

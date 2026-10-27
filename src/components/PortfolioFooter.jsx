@@ -5,8 +5,7 @@ const links = [
   { label: 'About', href: '#about' },
   { label: 'Education', href: '#education' },
   { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'References', href: '#references' }
+  { label: 'Projects', href: '#projects' }
 ];
 
 export default function PortfolioFooter() {

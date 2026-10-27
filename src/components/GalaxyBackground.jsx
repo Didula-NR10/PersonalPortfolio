@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Galaxy from './Galaxy/Galaxy';
 
-export default function GalaxyBackground({ className = '', backgroundColor = '#050816' }) {
+export default function GalaxyBackground({ className = '', backgroundColor = '#111E23' }) {
   const [supported, setSupported] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [compact, setCompact] = useState(false);
@@ -28,7 +28,7 @@ export default function GalaxyBackground({ className = '', backgroundColor = '#0
     <div className={`galaxy-background ${className}`} aria-hidden="true">
       {!supported && <div className="galaxy-fallback" style={{ backgroundColor }} />}
       {supported && <Galaxy
-        starColors={['#F1F5F9', '#F1F5F9', '#67E8F9', '#F1F5F9']}
+        starColors={['#F2F7F4', '#85D4C3', '#8AB9BE', '#F2F7F4']}
         density={compact ? 1.1 : 1.3}
         glowIntensity={0.24}
         starSize={0.82}
