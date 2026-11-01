@@ -104,6 +104,7 @@
 .about-info-heading-row :is(h2, h3) { margin-bottom: 0; }
 .about-period-pill { display: inline-flex; justify-content: center; min-width: 116px; padding: 7px 15px; border: 1px solid rgba(255, 255, 255, .8); border-radius: 999px; color: #fff; font-size: 12px; white-space: nowrap; }
 .about-info-education p { margin-top: 17px; }
+.about-education-honours { font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .about-technology-list { display: grid; grid-template-columns: repeat(3, 56px); gap: 17px 19px; margin: 22px 0 0; padding: 0; list-style: none; }
 .about-technology-list li { min-width: 0; }
 .about-technology-mark { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 10px; background: #17142f; color: #f6f0ff; font: 700 17px/1 Poppins, Inter, sans-serif; box-shadow: 0 4px 10px rgba(40, 24, 72, .16); transition: transform .25s, filter .25s; }
@@ -202,8 +203,8 @@
   .about-page-shell .portfolio-footer { padding-top: 10px; padding-bottom: 9px; }
   .about-page-shell .portfolio-footer-inner { gap: 12px; }
   .about-page-shell .portfolio-footer-copyright { margin-top: 7px; padding-top: 5px; }
-  .about-reconstruction { padding-bottom: clamp(8px, 1.4svh, 18px); }
-  .about-hero { height: 45svh; min-height: 0; }
+  .about-reconstruction { display: flex; flex-direction: column; min-height: 100svh; padding-bottom: 0; }
+  .about-hero { flex: none; height: 45svh; min-height: 0; }
   .about-title-capsule { top: 9svh; width: clamp(340px, 36vw, 435px); height: 62px; font-size: clamp(36px, 4vw, 44px); }
   .about-hero-copy { max-width: 610px; padding-top: 18svh; padding-bottom: 0; }
   .about-introduction .about-greeting { margin-bottom: 4px; font-size: 15px; }
@@ -216,9 +217,9 @@
   .about-contact-text a, .about-contact-text > span { font-size: 11px; }
   .about-portrait-area { padding-top: 9svh; }
   .about-portrait-frame { width: clamp(210px, 21vw, 260px); height: 36svh; }
-  .about-info-panel { height: 40svh; min-height: 0; }
-  .about-info-grid { padding-top: 26px; padding-bottom: 18px; }
-  .about-info-column { grid-template-rows: 86px 137px auto; }
+  .about-info-panel { display: flex; flex: 1; min-height: 40svh; }
+  .about-info-grid { flex: 1; padding-top: 26px; padding-bottom: 42px; }
+  .about-info-column { grid-template-rows: 86px 137px auto; align-content: space-between; }
   .about-info-group :is(h2, h3) { margin-bottom: 5px; font-size: clamp(18px, 2vw, 24px); }
   .about-info-group p, .about-inline-pair, .about-detail-columns { font-size: 11px; line-height: 1.55; }
   .about-info-education p { margin-top: 8px; }
@@ -236,7 +237,7 @@
   .about-introduction p { font-size: 11px; line-height: 1.43; }
   .about-portrait-area { padding-top: 9.6svh; }
   .about-portrait-frame { height: 35svh; }
-  .about-info-panel { height: 39svh; }
+  .about-info-panel { min-height: 39svh; }
   .about-info-grid { padding-top: 19px; }
   .about-info-column { grid-template-rows: 82px 125px auto; }
   .about-info-group :is(h2, h3) { font-size: 19px; }

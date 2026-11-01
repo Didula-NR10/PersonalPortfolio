@@ -5,16 +5,18 @@ import './education-journey.css';
 
 // All path points and milestone nodes use the same SVG coordinate system.
 const layouts = {
-  desktop: { height: 2520, points: [[500, 80], [290, 530], [710, 1000], [290, 1470], [710, 1940], [500, 2440]] },
-  tablet: { height: 2520, points: [[500, 80], [340, 530], [660, 1000], [340, 1470], [660, 1940], [500, 2440]] },
-  mobile: { height: 2520, points: [[500, 80], [95, 530], [275, 1000], [95, 1470], [275, 1940], [500, 2440]] }
+  desktop: { height: 2100, points: [[500, 80], [290, 520], [710, 1090], [290, 1650], [500, 2020]] },
+  tablet: { height: 2100, points: [[500, 80], [340, 520], [660, 1090], [340, 1650], [500, 2020]] },
+  mobile: { height: 2100, points: [[500, 80], [95, 520], [275, 1090], [95, 1650], [500, 2020]] }
 };
 
 const milestones = [
-  { number: '01', title: 'G.C.E. Ordinary Level (O/L)', details: ['School name to add', 'Completion year to add'], description: 'Add a short note about subjects, results, or a defining experience.' },
-  { number: '02', title: 'G.C.E. Advanced Level (A/L)', details: ['School name to add', 'Academic stream to add', 'Completion year to add'], description: 'Add a short note about your studies and academic interests.' },
-  { number: '03', title: 'Higher National Diploma (HND)', details: ['Institution to add', 'Specialization to add', 'Academic period to add'], description: 'Add relevant academic details or a project from this stage.' },
-  { number: '04', title: "Bachelor's Degree", details: ['University to add', 'Degree program to add', 'Academic period to add'], description: 'Academic status to add.' }
+  { number: '01', title: 'Bachelor of Science with Honours in Computer Science', details: ['University of Bedfordshire', '2024–2026'], achievement: 'First Class' },
+  { number: '02', title: 'Higher National Diploma in IT', details: ['SLIIT City University (SCU)'] },
+  { number: '03', title: 'G.C.E. O/L & A/L', qualifications: [
+    { level: 'Ordinary Level (O/L)', school: 'Central College Kuliyapitiya', period: '2020 (2021)' },
+    { level: 'Advanced Level (A/L)', school: 'Maliyadeva College, Kurunegala', stream: 'Science stream', period: '2023 (2024)' }
+  ] }
 ];
 
 function getLayout() {
@@ -208,9 +210,9 @@ export default function EducationJourney() {
     </div>
     <div className="education-journey-inner">
       <div className="education-journey-intro">
-        <p className="education-journey-eyebrow">THE PATH SO FAR / 001—004</p>
+        <p className="education-journey-eyebrow">THE PATH SO FAR / 001—003</p>
         <h2 id="education-title">MY EDUCATIONAL<br /><span>JOURNEY</span></h2>
-        <p>Four milestones. One continuous journey of learning and growth.</p>
+        <p>Three milestones, from degree to school qualifications.</p>
       </div>
 
       <div className="education-journey-canvas" ref={journeyRef} style={{ '--journey-height': `${layout.height}px` }}>
@@ -220,7 +222,7 @@ export default function EducationJourney() {
           <path className="education-path-active" d={pathData} ref={pathRef} />
         </svg>
         {layout.points.map(([x, y], index) => <span
-          className={`education-journey-node${index === 0 || index === 5 ? ' education-journey-node--endpoint' : ''}`}
+          className={`education-journey-node${index === 0 || index === layout.points.length - 1 ? ' education-journey-node--endpoint' : ''}`}
           key={index}
           ref={element => { nodeRefs.current[index] = element; }}
           style={{ left: `${x / 10}%`, top: `${y / layout.height * 100}%` }}
@@ -229,15 +231,23 @@ export default function EducationJourney() {
         {milestones.map((milestone, index) => {
           const [x, y] = layout.points[index + 1];
           return <article
-            className={`education-milestone education-milestone--${index % 2 === 0 ? 'left' : 'right'}`}
+            className={`education-milestone education-milestone--${index % 2 === 0 ? 'right' : 'left'}`}
             key={milestone.number}
             style={{ '--node-x': `${x / 10}%`, top: `${y / layout.height * 100}%` }}
           >
             <div className="education-milestone-content" ref={element => { contentRefs.current[index] = element; }}>
-              <p className="education-milestone-number">{milestone.number} <span>/ 04</span></p>
+              <p className="education-milestone-number">{milestone.number} <span>/ 03</span></p>
               <h3>{milestone.title}</h3>
-              <ul>{milestone.details.map(detail => <li key={detail}>{detail}</li>)}</ul>
-              <p className="education-milestone-description">{milestone.description}</p>
+              {milestone.details && <ul>{milestone.details.map(detail => <li key={detail}>{detail}</li>)}</ul>}
+              {milestone.achievement && <p className="education-milestone-achievement"><span>{milestone.achievement}</span></p>}
+              {milestone.qualifications && <div className="education-school-qualifications">
+                {milestone.qualifications.map(qualification => <div className="education-school-qualification" key={qualification.level}>
+                  <h4>{qualification.level}</h4>
+                  <p>{qualification.school}</p>
+                  {qualification.stream && <p>{qualification.stream}</p>}
+                  <time>{qualification.period}</time>
+                </div>)}
+              </div>}
             </div>
           </article>;
         })}

@@ -59,8 +59,13 @@
 .education-milestone h3 { margin: 0 0 19px; color: var(--education-text); font: 650 clamp(25px, 2.65vw, 35px)/1.14 'Space Grotesk', Inter, sans-serif; letter-spacing: -.04em; }
 .education-milestone ul { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
 .education-milestone li { color: var(--education-muted); font-size: 15px; line-height: 1.45; }
-.education-milestone-description { max-width: 310px; margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--education-rule); color: var(--education-muted); font-size: 14px; line-height: 1.6; }
-.education-milestone--left .education-milestone-description { margin-left: auto; }
+.education-milestone-achievement { margin: 18px 0 0; }
+.education-milestone-achievement span { display: inline-flex; align-items: center; padding: 10px 17px; border: 2px solid var(--education-accent); border-radius: 999px; background: color-mix(in srgb, var(--education-accent) 20%, var(--education-bg)); color: var(--education-text); font: 800 16px/1.2 'Space Grotesk', Inter, sans-serif; letter-spacing: .02em; box-shadow: 0 0 0 5px color-mix(in srgb, var(--education-accent) 10%, transparent), 0 0 25px color-mix(in srgb, var(--education-accent) 25%, transparent); }
+.education-school-qualifications { display: grid; gap: 20px; max-width: 440px; margin-top: 22px; }
+.education-school-qualification { padding-left: 16px; border-left: 2px solid var(--education-accent); text-align: left; }
+.education-school-qualification h4 { margin: 0 0 7px; color: var(--education-text); font: 700 18px/1.25 'Space Grotesk', Inter, sans-serif; }
+.education-school-qualification p, .education-school-qualification time { display: block; margin: 0 0 4px; color: var(--education-muted); font-size: 14px; line-height: 1.45; }
+.education-school-qualification time { color: var(--education-accent); font-weight: 700; }
 .education-journey-ending { margin: 10px auto 0; text-align: center; opacity: 1; transform: translateY(0); transition: opacity .55s ease, transform .55s ease; }
 .education-journey.is-motion-ready .education-journey-ending:not(.is-revealed) { opacity: 0; transform: translateY(16px); }
 .education-journey-ending .education-journey-eyebrow { margin-bottom: 12px; }
@@ -90,7 +95,7 @@
   .education-milestone-number { margin-bottom: 12px; }
   .education-milestone h3 { max-width: 450px; margin-bottom: 14px; font-size: clamp(24px, 6vw, 30px); }
   .education-milestone li { font-size: 14px; }
-  .education-milestone-description { margin: 14px 0 0; padding-top: 12px; font-size: 13px; }
+  .education-milestone-achievement { margin-top: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

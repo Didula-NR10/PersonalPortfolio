@@ -90,8 +90,8 @@ export function AboutSection({ embedded = true }) {
       <div className="about-info-grid">
         <div className="about-info-column">
           <section className="about-info-group about-info-education" aria-labelledby="about-education-title">
-            <div className="about-info-heading-row"><DetailHeading id="about-education-title">Education</DetailHeading><span className="about-period-pill">Period to add</span></div>
-            <p>Institution and program to add</p>
+            <div className="about-info-heading-row"><DetailHeading id="about-education-title">Education</DetailHeading><span className="about-period-pill">2024–2026</span></div>
+            <p>University of Bedfordshire · BSc (Hons) Computer Science · <strong className="about-education-honours">First Class</strong></p>
           </section>
           <section className="about-info-group about-info-technology" aria-labelledby="technologies-title">
             <DetailHeading id="technologies-title">Technical skill</DetailHeading>
