@@ -1,6 +1,6 @@
 :root {
   color-scheme: dark;
-  background: #101113;
+  background: #0C1427;
 }
 
 * { box-sizing: border-box; }
@@ -10,7 +10,7 @@ html, body, #root {
   min-width: 320px;
   min-height: 100%;
   margin: 0;
-  background: #101113;
+  background: #0C1427;
 }
 
 .galaxy-page {
@@ -18,7 +18,7 @@ html, body, #root {
   width: 100%;
   min-height: 100svh;
   overflow: hidden;
-  background: #101113;
+  background: #0C1427;
 }
 
 .galaxy-background,
@@ -31,7 +31,7 @@ html, body, #root {
 }
 
 .galaxy-fallback {
-  background-color: #101113;
+  background-color: #0C1427;
 }
 
 .galaxy-background .galaxy-container { z-index: 1; }
@@ -44,10 +44,10 @@ html, body, #root {
   inset: -28% -12%;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 29% 15% at 17% 49%, rgba(125, 77, 164, .23), transparent 75%),
-    radial-gradient(ellipse 34% 18% at 43% 51%, rgba(166, 91, 187, .26), transparent 74%),
-    radial-gradient(ellipse 28% 14% at 69% 48%, rgba(112, 73, 167, .20), transparent 76%),
-    radial-gradient(ellipse 42% 25% at 49% 52%, rgba(70, 44, 126, .16), transparent 82%);
+    radial-gradient(ellipse 29% 15% at 17% 49%, rgba(96, 165, 250, .23), transparent 75%),
+    radial-gradient(ellipse 34% 18% at 43% 51%, rgba(37, 99, 235, .26), transparent 74%),
+    radial-gradient(ellipse 28% 14% at 69% 48%, rgba(96, 165, 250, .20), transparent 76%),
+    radial-gradient(ellipse 42% 25% at 49% 52%, rgba(37, 99, 235, .16), transparent 82%);
   filter: blur(28px);
   transform: rotate(-15deg);
   opacity: .75;
@@ -72,10 +72,10 @@ html, body, #root {
 .galaxy-navigation.is-scrolled {
   top: 10px;
   padding: 7px 10px;
-  border: 1px solid rgba(185, 214, 255, .12);
+  border: 1px solid rgba(96, 165, 250, .12);
   border-radius: 999px;
-  background: rgba(7, 17, 29, .86);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, .28);
+  background: rgba(15, 29, 54, .86);
+  box-shadow: 0 12px 32px rgba(8, 15, 31, .28);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
 }
@@ -88,7 +88,18 @@ html, body, #root {
   text-decoration: none;
 }
 
-.navigation-brand span { color: #8abaff; }
+.navigation-brand span { color: #2563EB; }
+
+.navigation-actions { display: flex; align-items: center; gap: 9px; flex: none; }
+.galaxy-navigation .palette-trigger {
+  position: static;
+  z-index: auto;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  box-shadow: none;
+}
+.galaxy-navigation .palette-trigger svg { width: 19px; height: 19px; }
 
 
 .galaxy-navigation .gooey-nav__link {
@@ -98,7 +109,7 @@ html, body, #root {
 }
 
 .galaxy-navigation .gooey-nav--framed {
-  background: #1a1b26;
+  background: #111A30;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
@@ -112,7 +123,7 @@ html, body, #root {
   margin: 12px 0 0;
   padding: 8px 12px;
   border-radius: 999px;
-  background: #1a1b26;
+  background: #111A30;
   color: #d8e6fa;
   font-size: 12px;
   line-height: 1.4;
@@ -135,6 +146,8 @@ html, body, #root {
   .galaxy-navigation .gooey-nav { width: 100%; justify-content: center; }
   .galaxy-navigation .gooey-nav__list { justify-content: center; }
   .galaxy-navigation .gooey-nav--framed { border-radius: 24px; }
+
+  .galaxy-navigation .navigation-actions { position: absolute; top: 0; right: 0; }
 
 }
 

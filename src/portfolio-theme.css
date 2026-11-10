@@ -1,7 +1,7 @@
 :root {
-  --portfolio-obsidian: #050816;
-  --portfolio-blue: #3B82F6;
-  --portfolio-cyan: #67E8F9;
+  --portfolio-obsidian: #0F1D36;
+  --portfolio-blue: #2563EB;
+  --portfolio-cyan: #38BDF8;
   --portfolio-white: #F1F5F9;
   color-scheme: dark;
   background: var(--portfolio-obsidian);
@@ -13,26 +13,26 @@ html, body, #root, .galaxy-page, .portfolio-home, .about-page {
 }
 
 .portfolio-home {
-  background: radial-gradient(ellipse 70% 28% at 50% 13%, rgba(59, 130, 246, .11), transparent 80%), var(--portfolio-obsidian);
+  background: radial-gradient(ellipse 70% 28% at 50% 13%, rgba(37, 99, 235, .11), transparent 80%), var(--portfolio-obsidian);
 }
 
 .portfolio-home .galaxy-background::before {
-  background: radial-gradient(ellipse 48% 33% at 50% 81%, rgba(103, 232, 249, .22), transparent 73%),
-    linear-gradient(to top, rgba(59, 130, 246, .16), transparent 70%);
+  background: radial-gradient(ellipse 48% 33% at 50% 81%, rgba(56, 189, 248, .22), transparent 73%),
+    linear-gradient(to top, rgba(37, 99, 235, .16), transparent 70%);
 }
 
 .portfolio-home .galaxy-background::after,
 .galaxy-background::after {
-  background: radial-gradient(ellipse 30% 16% at 18% 49%, rgba(59, 130, 246, .2), transparent 75%),
-    radial-gradient(ellipse 35% 18% at 48% 50%, rgba(103, 232, 249, .18), transparent 74%),
-    radial-gradient(ellipse 32% 15% at 73% 48%, rgba(59, 130, 246, .17), transparent 76%);
+  background: radial-gradient(ellipse 30% 16% at 18% 49%, rgba(37, 99, 235, .2), transparent 75%),
+    radial-gradient(ellipse 35% 18% at 48% 50%, rgba(56, 189, 248, .18), transparent 74%),
+    radial-gradient(ellipse 32% 15% at 73% 48%, rgba(37, 99, 235, .17), transparent 76%);
 }
 
 .galaxy-navigation.is-scrolled,
 .galaxy-navigation .gooey-nav--framed,
 .navigation-notice {
-  background: rgba(5, 8, 22, .9);
-  border-color: rgba(103, 232, 249, .2);
+  background: rgba(15, 29, 54, .9);
+  border-color: rgba(56, 189, 248, .2);
 }
 
 .navigation-brand,
@@ -74,9 +74,9 @@ html, body, #root, .galaxy-page, .portfolio-home, .about-page {
 .portfolio-primary-action {
   background: var(--portfolio-blue);
   color: var(--portfolio-white);
-  box-shadow: 0 9px 30px rgba(59, 130, 246, .32);
+  box-shadow: 0 9px 30px rgba(37, 99, 235, .32);
 }
-.portfolio-primary-action:hover { box-shadow: 0 12px 38px rgba(59, 130, 246, .48); }
+.portfolio-primary-action:hover { box-shadow: 0 12px 38px rgba(37, 99, 235, .48); }
 .portfolio-education-link:hover,
 .portfolio-section-heading > a:hover { color: var(--portfolio-white); }
 
@@ -84,56 +84,56 @@ html, body, #root, .galaxy-page, .portfolio-home, .about-page {
 .portfolio-project-card,
 .portfolio-stats,
 .education-card {
-  border-color: rgba(103, 232, 249, .2);
-  background: rgba(5, 8, 22, .83);
-  box-shadow: 0 18px 48px rgba(5, 8, 22, .25);
+  border-color: rgba(56, 189, 248, .2);
+  background: rgba(15, 29, 54, .83);
+  box-shadow: 0 18px 48px rgba(15, 29, 54, .25);
 }
 
 .portfolio-avatar,
 .portfolio-focus-icon,
 .education-card-icon {
-  border-color: rgba(103, 232, 249, .42);
-  background: rgba(103, 232, 249, .08);
+  border-color: rgba(56, 189, 248, .42);
+  background: rgba(56, 189, 248, .08);
   color: var(--portfolio-cyan);
 }
 
-.portfolio-avatar { box-shadow: 0 0 24px rgba(103, 232, 249, .22); }
+.portfolio-avatar { box-shadow: 0 0 24px rgba(56, 189, 248, .22); }
 .portfolio-focus-list li,
 .portfolio-stat + .portfolio-stat,
-.portfolio-stat:nth-child(n+3) { border-color: rgba(103, 232, 249, .16); }
-.portfolio-focus-list li:hover .portfolio-focus-icon { box-shadow: 0 0 18px rgba(103, 232, 249, .28); }
+.portfolio-stat:nth-child(n+3) { border-color: rgba(56, 189, 248, .16); }
+.portfolio-focus-list li:hover .portfolio-focus-icon { box-shadow: 0 0 18px rgba(56, 189, 248, .28); }
 .portfolio-project-icon--steel,
 .portfolio-project-icon--blue,
-.portfolio-project-icon--teal { background: linear-gradient(135deg, var(--portfolio-blue), rgba(103, 232, 249, .75)); }
+.portfolio-project-icon--teal { background: linear-gradient(135deg, var(--portfolio-blue), rgba(56, 189, 248, .75)); }
 .portfolio-project-category,
 .portfolio-technology {
-  border-color: rgba(103, 232, 249, .24);
-  background: rgba(59, 130, 246, .13);
+  border-color: rgba(56, 189, 248, .24);
+  background: rgba(37, 99, 235, .13);
   color: var(--portfolio-white);
 }
 
 .education-timeline-dot {
   border-color: var(--portfolio-obsidian);
   background: var(--portfolio-cyan);
-  box-shadow: 0 0 0 1px rgba(103, 232, 249, .5), 0 0 20px rgba(103, 232, 249, .46);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, .5), 0 0 20px rgba(56, 189, 248, .46);
 }
-.education-timeline-track { background: linear-gradient(to bottom, transparent, rgba(103, 232, 249, .3) 8%, rgba(103, 232, 249, .3) 90%, transparent); }
-.education-timeline-beam { background: linear-gradient(to bottom, var(--portfolio-cyan), var(--portfolio-blue), var(--portfolio-cyan)); box-shadow: 0 0 13px rgba(103, 232, 249, .45); }
+.education-timeline-track { background: linear-gradient(to bottom, transparent, rgba(56, 189, 248, .3) 8%, rgba(56, 189, 248, .3) 90%, transparent); }
+.education-timeline-beam { background: linear-gradient(to bottom, var(--portfolio-cyan), var(--portfolio-blue), var(--portfolio-cyan)); box-shadow: 0 0 13px rgba(56, 189, 248, .45); }
 .education-timeline-marker h3,
 .education-mobile-title { color: var(--portfolio-white); }
 
 .about-page,
 .about-page .observatory-hero { background: var(--portfolio-obsidian); }
 .about-page .observatory-shade {
-  background: linear-gradient(90deg, rgba(5, 8, 22, .84), rgba(5, 8, 22, .69)),
+  background: linear-gradient(90deg, rgba(15, 29, 54, .84), rgba(15, 29, 54, .69)),
     linear-gradient(0deg, var(--portfolio-obsidian), transparent 22%, transparent 77%, var(--portfolio-obsidian));
 }
 .about-visual-card,
 .about-summary-card,
 .about-page .profile-details {
-  border-color: rgba(103, 232, 249, .17);
-  background: rgba(5, 8, 22, .9);
-  box-shadow: 0 24px 55px rgba(5, 8, 22, .35);
+  border-color: rgba(56, 189, 248, .17);
+  background: rgba(15, 29, 54, .9);
+  box-shadow: 0 24px 55px rgba(15, 29, 54, .35);
 }
 .about-page .about-eyebrow,
 .about-page .about-summary-card h1 em,
@@ -150,21 +150,21 @@ html, body, #root, .galaxy-page, .portfolio-home, .about-page {
 .about-page .profile-meta dd,
 .about-page .profile-interests li { color: rgba(241, 245, 249, .82); }
 .about-page .profile-interests li {
-  border-color: rgba(103, 232, 249, .16);
-  background: rgba(59, 130, 246, .06);
+  border-color: rgba(56, 189, 248, .16);
+  background: rgba(37, 99, 235, .06);
 }
-.about-page .profile-interests li:hover { background: rgba(59, 130, 246, .15); }
-.about-page .hologram-photo-beam { background: linear-gradient(to top, rgba(103, 232, 249, .25), transparent 85%); }
-.about-page .hologram-profile-photo { filter: drop-shadow(0 0 16px rgba(103, 232, 249, .25)); }
-.about-page .hologram-projector-base { filter: drop-shadow(0 0 14px rgba(103, 232, 249, .2)); }
+.about-page .profile-interests li:hover { background: rgba(37, 99, 235, .15); }
+.about-page .hologram-photo-beam { background: linear-gradient(to top, rgba(56, 189, 248, .25), transparent 85%); }
+.about-page .hologram-profile-photo { filter: drop-shadow(0 0 16px rgba(56, 189, 248, .25)); }
+.about-page .hologram-projector-base { filter: drop-shadow(0 0 14px rgba(56, 189, 248, .2)); }
 .about-page .about-scroll:hover { color: var(--portfolio-white); }
-.about-page .identity-dialog-backdrop { background: rgba(5, 8, 22, .78); }
+.about-page .identity-dialog-backdrop { background: rgba(15, 29, 54, .78); }
 .about-page .identity-dialog,
 .about-page .identity-dialog-close {
-  border-color: rgba(103, 232, 249, .45);
+  border-color: rgba(56, 189, 248, .45);
   background: var(--portfolio-obsidian);
   color: var(--portfolio-white);
-  box-shadow: 0 22px 80px rgba(5, 8, 22, .7), 0 0 30px rgba(103, 232, 249, .12);
+  box-shadow: 0 22px 80px rgba(15, 29, 54, .7), 0 0 30px rgba(56, 189, 248, .12);
 }
 .about-page .identity-dialog > p:first-of-type,
 .about-page .identity-dialog small,

@@ -1,0 +1,45 @@
+/* Midnight Cobalt: color-only overrides. Layout, assets and animations stay intact. */
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero {
+  background: radial-gradient(ellipse 42% 58% at 82% 48%, rgba(37,99,235,.12), transparent 82%),
+    radial-gradient(ellipse 38% 48% at 18% 42%, rgba(56,189,248,.065), transparent 82%), #0D1930;
+  color: #FFFFFF;
+}
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero-background::before {
+  background: radial-gradient(ellipse 30% 38% at 15% 45%, rgba(13,25,48,.7), transparent 95%),
+    radial-gradient(ellipse 31% 38% at 84% 45%, rgba(13,25,48,.68), transparent 95%);
+}
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero-background::after {
+  background: linear-gradient(90deg, transparent, rgba(13,25,48,.65) 42% 58%, transparent);
+}
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-coder-system {
+  --pcb-trace: #38BDF8; --pcb-secondary: #2563EB; --pcb-body: #38BDF8;
+  --pcb-head: #7DD3FC; --pcb-glow: #38BDF8; opacity: 1;
+}
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .pcb-trace { opacity: .67; }
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .pcb-trace--secondary { opacity: .4; }
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .pcb-signal--glow { opacity: .65; }
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero-copy h1,
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero-copy h2 { color: #FFFFFF; }
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero-copy h1 span,
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero-eyebrow,
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero-scroll { color: #60A5FA; }
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero-copy p:not(.home-hero-eyebrow) { color: #B8C7DC; }
+
+/* Make the moving circuitry readable without changing its geometry or animation. */
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero-background::before {
+  background: radial-gradient(ellipse 30% 38% at 15% 45%, rgba(13,25,48,.24), transparent 90%), radial-gradient(ellipse 31% 38% at 84% 45%, rgba(13,25,48,.22), transparent 90%);
+}
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero-background::after {
+  background: linear-gradient(90deg, transparent, rgba(13,25,48,.12) 42% 58%, transparent);
+}
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-coder-system { filter: drop-shadow(0 0 3px rgba(56,189,248,.25)); }
+
+/* Portfolio-wide dark theme: pages and panels, not only hero. */
+html[data-theme='dark'][data-palette='midnight-cobalt'] body,
+html[data-theme='dark'][data-palette='midnight-cobalt'] #root { background-color:#080F1F; color:#FFFFFF; }
+html[data-theme='dark'][data-palette='midnight-cobalt'] :is(.portfolio-home,.about-reconstruction,.about-page-shell,.journey-page,.education-section,.services-section,.projects-section) { background-color:#080F1F; }
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-hero { background: radial-gradient(ellipse at 72% 43%,rgba(37,99,235,.16),transparent 62%), #0D1930; }
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .home-coder-system { opacity:1; filter:drop-shadow(0 0 4px rgba(56,189,248,.38)); }
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .pcb-trace { opacity:.9; }
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .pcb-trace--secondary { opacity:.65; }
+html[data-theme='dark'][data-palette='midnight-cobalt'] .portfolio-home .pcb-signal--glow { opacity:.9; }

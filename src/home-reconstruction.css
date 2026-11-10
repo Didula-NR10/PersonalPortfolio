@@ -9,8 +9,8 @@
   justify-content: space-between;
   border: 0;
   border-radius: 0;
-  background: #101d22;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, .13);
+  background: #0F1D36;
+  box-shadow: 0 4px 20px rgba(8, 15, 31, .13);
   transform: none;
 }
 .portfolio-home .galaxy-navigation .gooey-nav {
@@ -32,7 +32,7 @@ html[data-theme] .portfolio-home .galaxy-navigation .navigation-brand { color: #
 .portfolio-home .galaxy-navigation .navigation-theme-toggle,
 html[data-theme] .portfolio-home .galaxy-navigation .navigation-theme-toggle {
   border-color: rgba(165, 209, 196, .3);
-  background: #1b3538;
+  background: #0F1D36;
   color: #b8e8dc;
 }
 
@@ -46,7 +46,7 @@ html[data-theme] .portfolio-home .galaxy-navigation .navigation-theme-toggle {
   min-height: 100svh;
   padding-top: 66px;
   background: #f9faf8;
-  color: #111b1d;
+  color: #0E172B;
   overflow: hidden;
 }
 .portfolio-home .home-hero-background {
@@ -85,13 +85,13 @@ html[data-theme] .portfolio-home .galaxy-navigation .navigation-theme-toggle {
   right: 0;
   width: 68%;
   opacity: .88;
-  --pcb-trace: #2b899f;
-  --pcb-secondary: #3b9bb0;
-  --pcb-body: #178ba8;
-  --pcb-head: #1facc6;
-  --pcb-glow: #43b9ca;
-  -webkit-mask-image: linear-gradient(270deg, #000 0 40%, transparent 99%);
-  mask-image: linear-gradient(270deg, #000 0 40%, transparent 99%);
+  --pcb-trace: #60A5FA;
+  --pcb-secondary: #38BDF8;
+  --pcb-body: #60A5FA;
+  --pcb-head: #38BDF8;
+  --pcb-glow: #38BDF8;
+  -webkit-mask-image: linear-gradient(270deg, #080F1F 0 40%, transparent 99%);
+  mask-image: linear-gradient(270deg, #080F1F 0 40%, transparent 99%);
 }
 .portfolio-home .pcb-trace {
   fill: none;
@@ -170,19 +170,19 @@ html[data-theme] .portfolio-home .galaxy-navigation .navigation-theme-toggle {
 .portfolio-home .home-hero-copy--coder { text-align: left; }
 .portfolio-home .home-hero-eyebrow {
   margin: 0 0 8px;
-  color: #237a70;
+  color: #2563EB;
   font: 700 10px/1.2 'JetBrains Mono', monospace;
   letter-spacing: .16em;
 }
 .portfolio-home .home-hero-copy h1,
 .portfolio-home .home-hero-copy h2 {
   margin: 0 0 12px;
-  color: #111819;
+  color: #0D162A;
   font: 800 clamp(43px, 4.2vw, 72px)/.98 'Space Grotesk', Inter, sans-serif;
   letter-spacing: -.075em;
   white-space: nowrap;
 }
-.portfolio-home .home-hero-copy h1 span { color: #237a70; }
+.portfolio-home .home-hero-copy h1 span { color: #2563EB; }
 .portfolio-home .home-hero-copy p:not(.home-hero-eyebrow) {
   max-width: 285px;
   margin: 0;
@@ -202,8 +202,8 @@ html[data-theme] .portfolio-home .galaxy-navigation .navigation-theme-toggle {
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0 87%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0 87%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #080F1F 0 87%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #080F1F 0 87%, transparent 100%);
 }
 .portfolio-home .home-hero-scroll {
   position: absolute;
@@ -213,29 +213,29 @@ html[data-theme] .portfolio-home .galaxy-navigation .navigation-theme-toggle {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: #176d63;
+  color: #2563EB;
   font: 700 12px/1 'Space Grotesk', Inter, sans-serif;
   text-decoration: none;
 }
 .portfolio-home .home-hero-scroll:hover { text-decoration: underline; text-underline-offset: 4px; }
 .portfolio-home .home-hero-scroll svg { transform: rotate(45deg); }
 
-html[data-theme='dark'] .portfolio-home .home-hero { background: radial-gradient(ellipse 32% 52% at 15% 50%, rgba(28, 130, 128, .07), transparent 83%), radial-gradient(ellipse 32% 48% at 85% 50%, rgba(0, 141, 204, .08), transparent 83%), #071014; color: #f2f7f4; }
-html[data-theme='dark'] .portfolio-home .home-hero-background::before { background: radial-gradient(ellipse 30% 38% at 15% 45%, #071014 0%, rgba(7, 16, 20, .7) 52%, transparent 100%), radial-gradient(ellipse 31% 38% at 84% 45%, #071014 0%, rgba(7, 16, 20, .86) 50%, transparent 100%); }
-html[data-theme='dark'] .portfolio-home .home-hero-background::after { background: linear-gradient(90deg, transparent, #071014 40% 60%, transparent); }
+html[data-theme='dark'] .portfolio-home .home-hero { background: radial-gradient(ellipse 32% 52% at 15% 50%, rgba(37, 99, 235, .07), transparent 83%), radial-gradient(ellipse 32% 48% at 85% 50%, rgba(56, 189, 248, .08), transparent 83%), #0F1D36; color: #f2f7f4; }
+html[data-theme='dark'] .portfolio-home .home-hero-background::before { background: radial-gradient(ellipse 30% 38% at 15% 45%, #0F1D36 0%, rgba(15, 29, 54, .7) 52%, transparent 100%), radial-gradient(ellipse 31% 38% at 84% 45%, #0F1D36 0%, rgba(15, 29, 54, .86) 50%, transparent 100%); }
+html[data-theme='dark'] .portfolio-home .home-hero-background::after { background: linear-gradient(90deg, transparent, #0F1D36 40% 60%, transparent); }
 html[data-theme='dark'] .portfolio-home .home-coder-system {
   opacity: .94;
-  --pcb-trace: #00d9ff;
-  --pcb-secondary: #008fb8;
-  --pcb-body: #00d9ff;
-  --pcb-head: #70f5ff;
-  --pcb-glow: #00d9ff;
+  --pcb-trace: #38BDF8;
+  --pcb-secondary: #38BDF8;
+  --pcb-body: #38BDF8;
+  --pcb-head: #38BDF8;
+  --pcb-glow: #38BDF8;
 }
 html[data-theme='dark'] .portfolio-home .home-hero-copy h1,
 html[data-theme='dark'] .portfolio-home .home-hero-copy h2 { color: #f2f7f4; }
 html[data-theme='dark'] .portfolio-home .home-hero-copy h1 span,
 html[data-theme='dark'] .portfolio-home .home-hero-eyebrow,
-html[data-theme='dark'] .portfolio-home .home-hero-scroll { color: #85d4c3; }
+html[data-theme='dark'] .portfolio-home .home-hero-scroll { color: #60A5FA; }
 html[data-theme='dark'] .portfolio-home .home-hero-copy p:not(.home-hero-eyebrow) { color: #b8cac8; }
 @media (max-width: 1020px) {
   .portfolio-home .pcb-route--tablet-detail { display: none; }
@@ -245,14 +245,25 @@ html[data-theme='dark'] .portfolio-home .home-hero-copy p:not(.home-hero-eyebrow
   .portfolio-home .home-hero-copy h2 { font-size: clamp(34px, 4.4vw, 48px); }
   .portfolio-home .home-hero-copy p:not(.home-hero-eyebrow) { font-size: 12px; }
 }
+@media (min-width: 701px) {
+  .portfolio-home .home-hero-copy--designer { margin-top: clamp(105px, 13vw, 165px); }
+  .portfolio-home .home-hero-art {
+    height: calc(100svh - 66px);
+    top: calc((clamp(570px, 82svh, 760px) - 100svh) / 2);
+  }
+  .portfolio-home .home-hero-art img {
+    -webkit-mask-image: linear-gradient(to bottom, #080F1F 0 80%, transparent 90%);
+    mask-image: linear-gradient(to bottom, #080F1F 0 80%, transparent 90%);
+  }
+}
 @media (max-width: 700px) {
   .portfolio-home .pcb-route--mobile-hidden { display: none; }
   .portfolio-home .pcb-signal--glow { filter: none; opacity: .25; }
   .portfolio-home .galaxy-navigation,
   .portfolio-home .galaxy-navigation.is-scrolled { min-height: 94px; padding: 9px 16px; flex-direction: column; gap: 0; }
   .portfolio-home .galaxy-navigation > .navigation-brand { align-self: flex-start; }
-  .portfolio-home .galaxy-navigation > .navigation-theme-toggle,
-  .portfolio-home .galaxy-navigation.is-scrolled > .navigation-theme-toggle { top: 9px; right: 16px; }
+  .portfolio-home .galaxy-navigation > .navigation-actions,
+  .portfolio-home .galaxy-navigation.is-scrolled > .navigation-actions { top: 9px; right: 16px; }
   .portfolio-home .home-hero { min-height: 100svh; padding-top: 95px; }
   .portfolio-home .home-hero-background { inset: 95px 0 0; }
   .portfolio-home .home-coder-system { top: 155px; width: 68%; height: calc(100% - 155px); }
@@ -269,8 +280,8 @@ html[data-theme='dark'] .portfolio-home .home-hero-copy p:not(.home-hero-eyebrow
   .portfolio-home .home-hero-copy h2 { font-size: clamp(32px, 7vw, 48px); }
   .portfolio-home .home-hero-copy p:not(.home-hero-eyebrow) { font-size: 11px; line-height: 1.55; }
   .portfolio-home .home-hero-eyebrow { font-size: 8px; }
-  .portfolio-home .home-hero-scroll { bottom: 15px; right: 6px; padding: 8px 10px; background: rgba(249,250,248,.88); }
-  html[data-theme='dark'] .portfolio-home .home-hero-scroll { background: rgba(19,35,41,.9); }
+  .portfolio-home .home-hero-scroll { bottom: 15px; right: 6px; padding: 8px 10px; background: rgba(249, 250, 248, .88); }
+  html[data-theme='dark'] .portfolio-home .home-hero-scroll { background: rgba(15, 29, 54, .9); }
 }
 @media (prefers-reduced-motion: reduce) {
   .portfolio-home .pcb-signal,

@@ -97,9 +97,9 @@ function FlightController({target,onArrive,onProgress,speed}){
   return ()=>{tween.current?.kill();speed.current=0;};
  },[target?.id]);return null;
 }
-function Universe({target,traveling,onArrive,onProgress}){
+function Universe({target,traveling,onArrive,onProgress,sceneActive}){
  const speed=useRef(0);
- return <Canvas camera={{position:[0,2,15],fov:64,near:.1,far:350}} dpr={[1,1.65]} gl={{antialias:true,alpha:false,powerPreference:'high-performance'}} onCreated={({gl})=>gl.setClearColor('#050816')}>
+ return <Canvas camera={{position:[0,2,15],fov:64,near:.1,far:350}} dpr={[1,1.65]} frameloop={sceneActive?'always':'demand'} gl={{antialias:true,alpha:false,powerPreference:'high-performance'}} onCreated={({gl})=>gl.setClearColor('#050816')}>
   <ambientLight intensity={.35}/>{!traveling&&<Stars radius={200} depth={160} count={1800} factor={2.8} saturation={0} fade speed={.07}/>}
   <NebulaClouds speed={speed}/>{!traveling&&<WarpField speed={speed}/>}
   {DESTINATIONS.map(item=><Destination key={item.id} item={item} active={target?.id===item.id} traveling={traveling} onSelect={id=>window.dispatchEvent(new CustomEvent('hich-navigate',{detail:id}))}/>)}
@@ -128,32 +128,31 @@ function TechnologyOrbit({item,visible}){
 }
 // Fine streaks move outward during travel.
 function HyperspaceOverlay({active,intensity}){
- const canvas=useRef(null);const value=useRef(0);
- useEffect(()=>{value.current=intensity},[intensity]);
+ const canvas=useRef(null);
  useEffect(()=>{
   if(!active||!canvas.current)return;
   const el=canvas.current,ctx=el.getContext('2d',{alpha:true});
   if(!ctx)return;
-  let raf=0,w=0,h=0,dpr=1;
+  let raf=0,w=0,h=0,dpr=1,reach=0;
   const count=350;
-  const stars=Array.from({length:count},()=>({a:Math.random()*Math.PI*2,r:Math.random()*.98+.015,z:Math.random(),tint:Math.random()}));
-  const resize=()=>{dpr=Math.min(window.devicePixelRatio||1,2);w=window.innerWidth;h=window.innerHeight;el.width=Math.round(w*dpr);el.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)};
+  const stars=Array.from({length:count},()=>{const a=Math.random()*Math.PI*2;return {a,cos:Math.cos(a),sin:Math.sin(a),r:Math.random()*.98+.015,z:Math.random(),tint:Math.random()}});
+  const resize=()=>{dpr=Math.min(window.devicePixelRatio||1,2);w=window.innerWidth;h=window.innerHeight;reach=Math.hypot(w,h)*.62;el.width=Math.round(w*dpr);el.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)};
   resize();window.addEventListener('resize',resize);
   const draw=()=>{
    ctx.clearRect(0,0,w,h);
-   const power=Math.max(.06,value.current),cx=w*.5,cy=h*.5,reach=Math.hypot(w,h)*.62;
+   const power=Math.max(.06,intensity.current),cx=w*.5,cy=h*.5;
    ctx.fillStyle=`rgba(5,8,22,${.08+power*.1})`;ctx.fillRect(0,0,w,h);
+   ctx.lineCap='round';
    stars.forEach(st=>{
     st.r+= (.0012+st.z*.005)*(.5+power*2.6);
-    if(st.r>1.15){st.r=.006;st.a=Math.random()*Math.PI*2;st.z=Math.random()}
+    if(st.r>1.15){st.r=.006;st.a=Math.random()*Math.PI*2;st.cos=Math.cos(st.a);st.sin=Math.sin(st.a);st.z=Math.random()}
     const r=st.r*reach;
-    const x=cx+Math.cos(st.a)*r,y=cy+Math.sin(st.a)*r*.73;
+    const x=cx+st.cos*r,y=cy+st.sin*r*.73;
     const col=st.tint<.2?'103,232,249':st.tint<.35?'59,130,246':'241,245,249';
     const length=(3+st.r*30)*power*(.5+st.z);
     ctx.strokeStyle=`rgba(${col},${Math.min(.72,.18+st.z*.3+power*.22)})`;
     ctx.lineWidth=.7;
-    ctx.lineCap='round';
-    ctx.beginPath();ctx.moveTo(x-Math.cos(st.a)*length,y-Math.sin(st.a)*length*.73);ctx.lineTo(x,y);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(x-st.cos*length,y-st.sin*length*.73);ctx.lineTo(x,y);ctx.stroke();
    });
    raf=requestAnimationFrame(draw);
   };
@@ -163,15 +162,19 @@ function HyperspaceOverlay({active,intensity}){
  return <canvas ref={canvas} className={'hyperspace-overlay '+(active?'warp-visible':'')} aria-hidden="true"/>;
 }
 
-function App(){
- const [selected,setSelected]=useState(null),[traveling,setTraveling]=useState(false),[progress,setProgress]=useState(0),[arrived,setArrived]=useState(true);
+function App({sceneActive=true}){
+ const [selected,setSelected]=useState(null),[traveling,setTraveling]=useState(false),[arrived,setArrived]=useState(true);
+ const progress=useRef(0);
+ const arrivalTimer=useRef(0);
+ const updateProgress=useCallback(value=>{progress.current=value},[]);
  const [reduced,setReduced]=useState(()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches);
  useEffect(()=>{const m=window.matchMedia('(prefers-reduced-motion: reduce)');const h=()=>setReduced(m.matches);m.addEventListener('change',h);return()=>m.removeEventListener('change',h)},[]);
+ useEffect(()=>()=>window.clearTimeout(arrivalTimer.current),[]);
  const target=DESTINATIONS.find(d=>d.id===selected)||null;
- const go=useCallback(id=>{if(id===selected)return;setArrived(false);setTraveling(!reduced);setSelected(id);if(reduced){setTimeout(()=>{setTraveling(false);setArrived(true)},50)}},[selected,reduced]);
+ const go=useCallback(id=>{if(id===selected)return;window.clearTimeout(arrivalTimer.current);setArrived(false);setTraveling(!reduced);setSelected(id);if(reduced){arrivalTimer.current=window.setTimeout(()=>{setTraveling(false);setArrived(true)},50)}},[selected,reduced]);
  useEffect(()=>{const h=e=>go(e.detail);window.addEventListener('hich-navigate',h);return()=>window.removeEventListener('hich-navigate',h)},[go]);
  return <main className="app">
-  <div className="universe"><Universe target={target} traveling={traveling} onArrive={()=>{setTraveling(false);setArrived(true)}} onProgress={setProgress}/></div>
+  <div className="universe"><Universe target={target} traveling={traveling} onArrive={()=>{setTraveling(false);setArrived(true)}} onProgress={updateProgress} sceneActive={sceneActive}/></div>
   <TechnologyOrbit key={selected||"overview"} item={target} visible={Boolean(selected)&&arrived&&!traveling}/>
   <HyperspaceOverlay active={traveling&&!reduced} intensity={progress}/>
   <div className="side-index">EXPERIENCE / 001</div>

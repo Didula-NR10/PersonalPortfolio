@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import GooeyNav from './GooeyNav/GooeyNav';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from '../theme';
+import PaletteSwitcher from './PaletteSwitcher';
 
 const items = [
   { label: 'Home', href: '#home' },
@@ -41,6 +42,7 @@ export default function GalaxyNavigation({ page = 'home' }) {
     return () => window.removeEventListener('portfolio-palette-change', updateColors);
   }, []);
   useEffect(() => {
+    let frame = 0;
     const update = () => {
       setScrolled(window.scrollY > 32);
       if (page !== 'home') return;
@@ -52,12 +54,17 @@ export default function GalaxyNavigation({ page = 'home' }) {
       const next = projects && position >= projects.offsetTop ? 4 : services && position >= services.offsetTop ? 3 : education && position >= education.offsetTop ? 2 : about && position >= about.offsetTop ? 1 : 0;
       setHomeSection(current => current === next ? current : next);
     };
+    const schedule = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => { frame = 0; update(); });
+    };
     update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
     return () => {
-      window.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
     };
   }, [page]);
 
@@ -93,9 +100,12 @@ export default function GalaxyNavigation({ page = 'home' }) {
         wobble={0.3}
         hoverEffect
       />
-      <button className="navigation-theme-toggle" type="button" aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`} aria-pressed={theme === 'light'} title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`} onClick={() => setTheme(current => current === 'dark' ? 'light' : 'dark')}>
-        {theme === 'dark' ? <Sun size={19} strokeWidth={1.8} aria-hidden="true" /> : <Moon size={19} strokeWidth={1.8} aria-hidden="true" />}
-      </button>
+      <div className="navigation-actions">
+        <PaletteSwitcher />
+        <button className="navigation-theme-toggle" type="button" aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`} aria-pressed={theme === 'light'} title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`} onClick={() => setTheme(current => current === 'dark' ? 'light' : 'dark')}>
+          {theme === 'dark' ? <Sun size={19} strokeWidth={1.8} aria-hidden="true" /> : <Moon size={19} strokeWidth={1.8} aria-hidden="true" />}
+        </button>
+      </div>
       <p className="navigation-notice" aria-live="polite">{notice}</p>
     </header>
   );

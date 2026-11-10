@@ -4,3 +4,6 @@ dist/
 .npm-cache/
 .edge-qa*/
 galaxy-check*.png
+.performance/
+.env
+.env.local

@@ -93,8 +93,8 @@ html[data-theme='light'] .journey-gateway-panel > span { color: #52647d; }
 
 @media (max-width: 700px) {
   .galaxy-navigation > .navigation-brand { align-self: flex-start; min-height: 42px; display: flex; align-items: center; }
-  .galaxy-navigation > .navigation-theme-toggle { position: absolute; top: 0; right: 0; }
-  .galaxy-navigation.is-scrolled > .navigation-theme-toggle { top: 7px; right: 10px; }
+  .galaxy-navigation > .navigation-actions { top: 0; right: 0; }
+  .galaxy-navigation.is-scrolled > .navigation-actions { top: 7px; right: 10px; }
 }
 
 @media (max-width: 420px) {

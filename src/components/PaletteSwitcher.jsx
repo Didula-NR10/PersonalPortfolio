@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Check, Heart, Palette, Search, X } from 'lucide-react';
+import { createPortal } from 'react-dom';
 import { originalPalette, paletteCategories, palettes, referencePalettes } from '../palette-config';
 import { useTheme } from '../theme';
 
@@ -46,7 +47,7 @@ export default function PaletteSwitcher() {
     <button ref={triggerRef} className="palette-trigger" type="button" onClick={() => setOpen(true)} aria-label="Customize Theme" aria-haspopup="dialog" aria-expanded={open} title="Customize Theme">
       <Palette size={22} strokeWidth={1.8} aria-hidden="true" />
     </button>
-    {open && <div className="palette-overlay" onPointerDown={event => { if (event.target === event.currentTarget) close(); }}>
+    {open && createPortal(<div className="palette-overlay" onPointerDown={event => { if (event.target === event.currentTarget) close(); }}>
       <section ref={panelRef} className="palette-panel" role="dialog" aria-modal="true" aria-labelledby="palette-panel-title" aria-describedby="palette-panel-description">
         <div className="palette-panel-header">
           <div><span className="palette-panel-eyebrow">COLOUR STUDIO</span><h2 id="palette-panel-title">Personalize Your Experience</h2><p id="palette-panel-description">Choose a colour palette that matches your style.</p></div>
@@ -69,6 +70,6 @@ export default function PaletteSwitcher() {
         </div>
         <div className="palette-panel-footer"><span>{referencePalettes.length} reference palettes</span><button type="button" onClick={() => choose('original')}>Reset to Original Theme</button></div>
       </section>
-    </div>}
+    </div>, document.body)}
   </>;
 }

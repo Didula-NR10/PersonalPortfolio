@@ -16,11 +16,14 @@ function initialTheme() {
 function initialPreferences() {
   try {
     const saved = JSON.parse(window.localStorage.getItem('portfolio-theme-preferences') || 'null');
+    // One-time migration: apply the new default even if an older palette was saved.
+    const migrated = window.localStorage.getItem('midnight-cobalt-default-v3') === 'yes';
+    if (!migrated) { window.localStorage.setItem('midnight-cobalt-default-v3', 'yes'); return { paletteId: 'midnight-cobalt', favorites: Array.isArray(saved?.favorites) ? saved.favorites : [] }; }
     return {
-      paletteId: getPalette(saved?.paletteId).id,
+      paletteId: getPalette(saved?.paletteId || 'midnight-cobalt').id,
       favorites: Array.isArray(saved?.favorites) ? saved.favorites.filter(id => getPalette(id).id === id) : []
     };
-  } catch { return { paletteId: 'original', favorites: [] }; }
+  } catch { return { paletteId: 'midnight-cobalt', favorites: [] }; }
 }
 
 export function ThemeProvider({ children }) {

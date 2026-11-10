@@ -13,7 +13,8 @@ const projectIcons = {
   'golden-treat': CakeSlice,
   'the-last-run': Gamepad2,
   'healthcare-system': HeartPulse,
-  'rawana-ceylon': UsersRound
+  'rawana-ceylon': UsersRound,
+  numberbound: Gamepad2
 };
 
 function ProjectArtwork({ project }: { project: typeof projects[number] }) {

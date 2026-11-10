@@ -117,7 +117,31 @@ export const referencePalettes = referencePaletteEntries.map(palette => ({
   previewGradient: `linear-gradient(90deg, ${palette.colors.join(', ')})`,
   modes: { dark: paletteTokens(palette, 'dark'), light: paletteTokens(palette, 'light') }
 }));
-export const palettes = [originalPalette, ...referencePalettes];
+// The portfolio's new default; the previous Original Theme remains selectable.
+export const midnightCobaltPalette = {
+  id: 'midnight-cobalt',
+  name: 'Midnight Cobalt',
+  category: 'dark',
+  family: 'blue black',
+  colors: ['#080F1F', '#111F38', '#2563EB', '#38BDF8', '#FFFFFF'],
+  source: null,
+  modes: {
+    dark: {
+      '--theme-bg': '#080F1F', '--theme-surface': '#111F38',
+      '--theme-nav': '#0B1629', '--theme-text': '#FFFFFF',
+      '--theme-muted': '#B8C7DC', '--theme-subtle': '#93A9C7',
+      '--theme-accent': '#60A5FA', '--theme-button': '#2563EB',
+      '--theme-button-text': '#FFFFFF', '--theme-border': '#2A4267',
+      '--theme-accent-wash': '#172B4E', '--theme-haze': '#102C57',
+      '--theme-path': '#38BDF8', '--palette-gradient-start': '#2563EB',
+      '--palette-gradient-end': '#38BDF8', '--palette-panel-text': '#FFFFFF',
+      '--palette-circuit-base': '#2563EB', '--palette-circuit-active': '#38BDF8',
+      '--palette-circuit-glow': '#7DD3FC', '--palette-hero-bg': '#0D1930'
+    },
+    light: paletteTokens({ id: 'midnight-cobalt', colors: ['#080F1F', '#111F38', '#2563EB', '#38BDF8', '#FFFFFF'] }, 'light')
+  }
+};
+export const palettes = [originalPalette, midnightCobaltPalette, ...referencePalettes];
 
 export function applyPalette(palette, appearance) {
   const root = document.documentElement;

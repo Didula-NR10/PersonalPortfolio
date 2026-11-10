@@ -64,6 +64,25 @@ export default function ServicesUniverse() {
   const { theme } = useTheme();
   const hostRef = useRef(null);
   const [shadowRoot, setShadowRoot] = useState(null);
+  const [sceneVisible, setSceneVisible] = useState(false);
+
+  useLayoutEffect(() => {
+    const host = hostRef.current;
+    if (!host) return undefined;
+    if (!('IntersectionObserver' in window)) { setSceneVisible(true); return undefined; }
+    const rect = host.getBoundingClientRect();
+    setSceneVisible(rect.bottom > 0 && rect.top < window.innerHeight);
+    const observer = new IntersectionObserver(([entry]) => setSceneVisible(entry.isIntersecting), { threshold: 0 });
+    observer.observe(host);
+    return () => observer.disconnect();
+  }, []);
+
+  const [tabVisible, setTabVisible] = useState(() => !document.hidden);
+  useLayoutEffect(() => {
+    const update = () => setTabVisible(!document.hidden);
+    document.addEventListener('visibilitychange', update);
+    return () => document.removeEventListener('visibilitychange', update);
+  }, []);
 
   useLayoutEffect(() => {
     const host = hostRef.current;
@@ -91,7 +110,7 @@ export default function ServicesUniverse() {
       <style>{darkStyles}</style>
       {theme === 'light' && <style>{lightStyles}</style>}
       <style>{paletteStyles}</style>
-      <OriginalServices />
+      <OriginalServices sceneActive={sceneVisible && tabVisible} />
     </>, shadowRoot)}
   </section>;
 }

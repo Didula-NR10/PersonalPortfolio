@@ -4,7 +4,7 @@ import PortfolioHome from './pages/PortfolioHome';
 import AboutPage from './pages/AboutPage';
 import JourneyGateway from './pages/JourneyGateway';
 import { ThemeProvider } from './theme';
-import PaletteSwitcher from './components/PaletteSwitcher';
+import AskAI from './components/AskAI';
 import './tailwind.css';
 import './galaxy-page.css';
 import './portfolio-theme.css';
@@ -13,6 +13,7 @@ import './light-mode.css';
 import './cohesive-theme.css';
 import './home-reconstruction.css';
 import './palette-system.css';
+import './midnight-cobalt.css';
 
 const resolvePage = hash => ['story', 'mindset', 'exploration', 'vision'].includes(hash) ? 'about' : hash === 'journey' ? 'journey' : 'home';
 const sectionTitles = {
@@ -57,4 +58,5 @@ function App() {
   return <PortfolioHome />;
 }
 
-createRoot(document.getElementById('root')).render(<ThemeProvider><App /><PaletteSwitcher /></ThemeProvider>);
+createRoot(document.getElementById('root')).render(<ThemeProvider><App /><AskAI /></ThemeProvider>);
+

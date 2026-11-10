@@ -67,7 +67,7 @@ export const projects = [
     dataFlow: 'Customer or admin action → PHP page/API → SQL statements → MySQL business records → response or refreshed page.',
     security: 'The cart endpoint reads a PHP session identifier and uses a prepared statement for product lookup. This does not establish protections for every endpoint.',
     challenges: 'The repository combines multiple PHP modules and database access styles. This case study describes observed boundaries without labeling the whole codebase MVC.',
-    contribution: 'The repository is under a collaborator account. Your individual responsibilities in this team project have not yet been specified.',
+    contribution: 'I worked on PHP frontend/backend integration, login gating for cart actions, and admin FAQ management. Other modules are described as project functionality, not solely my work.',
     coverImage: null, gallery: [], repositoryUrl: 'https://github.com/Diablo-Haritha/Golden-Treat-Bakery', liveUrl: 'https://goldentreat.didulanr12.workers.dev/',
     sourceNote: 'Module structure, Composer manifest, cart and billing endpoints checked on the public DEV branch.'
   },
@@ -169,6 +169,42 @@ export const projects = [
     contribution: 'The repository documents team/system behavior. Individual ownership of each social feature has not been supplied.',
     coverImage: null, gallery: [], repositoryUrl: 'https://github.com/Didula-NR10/socialmedia', liveUrl: 'https://rawanaceylon.didulanr12.workers.dev/',
     sourceNote: 'README, FastAPI routes, requirements and frontend API client checked against the public repository.'
+  },
+  {
+    id: 'numberbound', number: '06', title: 'NUMBERBOUND', category: 'Other', categoryLabel: 'Godot / Game Development',
+    subtitle: 'An offline cooperative fantasy platform game',
+    description: 'A number-themed 2D adventure built around four cooperating characters, stacking, puzzles, digit collection and crafting. Multiplayer is planned for a later phase.',
+    technologies: ['Godot 4', 'C++17', 'GDExtension', 'GDScript', 'SCons'],
+    stack: { Languages: ['C++17', 'GDScript'], Engine: ['Godot 4', 'Godot 2D physics and animation'], Tooling: ['GDExtension', 'godot-cpp', 'SCons', 'MSVC', 'Git'] },
+    architecture: {
+      label: 'Component-oriented game architecture', subtitle: 'Party × gameplay × engine',
+      summary: 'C++ components own core gameplay rules while Godot scenes and Resources compose levels and configuration. PartyManager coordinates four characters; movement, following, commands, stacking, puzzles and inventory have separate responsibilities. Networking is a later design phase.',
+      nodes: [
+        { name: 'Player input', role: 'Selects a character and sends movement or companion commands.', receives: 'Keyboard or controller actions', connects: 'PartyManager' },
+        { name: 'PartyManager', role: 'Coordinates character switching and shared party state.', receives: 'Player commands', connects: 'Character components' },
+        { name: 'Character components', role: 'Handle movement, following, stacking and combat behavior.', receives: 'Party state and physics events', connects: 'Puzzles and inventory' },
+        { name: 'Puzzles and inventory', role: 'Track cooperation, number pickups and crafting resources.', receives: 'Interactions and pickups', connects: 'Level state' },
+        { name: 'Godot scenes', role: 'Compose levels, visuals, physics and data-driven Resources.', receives: 'Gameplay state', connects: 'Player display' }
+      ]
+    },
+    highlights: ['Four-character cooperation', 'Stacking and safe dismounting', 'Number collection and crafting', 'Offline gameplay scope'],
+    overview: 'NUMBERBOUND is a 2D fantasy platform adventure set in Numeria. Four characters cooperate to cross levels, solve environmental puzzles and collect ordinary digits for crafting. Nine distinct Core Numbers drive story progression and are separate from crafting digits. The supplied project reference reports completion of an offline scope; later phases and multiplayer have not been verified.',
+    problem: 'A cooperative platform game needs several characters and puzzle systems to interact without putting every rule into one controller.',
+    solution: 'The design separates party coordination, character behavior, puzzles, inventory and level state into focused components composed in Godot scenes.',
+    features: [
+      { name: 'Party cooperation', detail: 'Character switching, follower and HOLD commands, shoulder stacking and safe dismounting support four-character play.' },
+      { name: 'Puzzles and progression', detail: 'Cooperative pressure plates, gates and giant Core Numbers connect moment-to-moment play to story progression.' },
+      { name: 'Digit crafting', detail: 'Ordinary digit pickups feed a shared inventory and recipe validation for digit-shaped weapons.' },
+      { name: 'Combat and enemies', detail: 'Health, attacks, enemy AI and defeat rewards form part of the documented offline systems.' }
+    ],
+    decisions: ['Keep core game rules in C++ components and use Godot scenes for composition.', 'Separate ordinary crafting digits from story Core Numbers.', 'Design networking as a later host-authoritative phase rather than claiming it is in the offline build.'],
+    principles: ['Component cohesion', 'Composition over inheritance', 'Data-driven configuration'],
+    dataFlow: 'Player input → party and character systems → physics or puzzle interaction → pickups and shared inventory → crafting, combat and level state.',
+    security: '',
+    challenges: 'The reference document reports offline regression results, but the repository and current release state were not independently inspected. Multiplayer and later phases remain planned.',
+    contribution: 'I led the architecture-first design and iterative C++/Godot development, including gameplay boundaries, cooperation, crafting recipes and testing strategy.',
+    coverImage: null, gallery: [], repositoryUrl: null, liveUrl: null,
+    sourceNote: 'Developer-supplied My_Projects_Detailed.docx; offline scope reported in the document, with repository and release status unverified.'
   }
 ];
 

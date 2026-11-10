@@ -1,7 +1,7 @@
-﻿.portfolio-home .home-cinematic-scene {
-  --scene-cyan: var(--palette-circuit-active, #52d7e9);
-  --scene-glow: var(--palette-circuit-glow, #81eff5);
-  --scene-warm: var(--palette-gradient-end, #ffad66);
+.portfolio-home .home-cinematic-scene {
+  --scene-cyan: var(--palette-circuit-active, #38BDF8);
+  --scene-glow: var(--palette-circuit-glow, #38BDF8);
+  --scene-warm: var(--palette-gradient-end, #2563EB);
   --scene-panel: color-mix(in srgb, var(--theme-surface) 67%, transparent);
   position: absolute;
   z-index: 2;
@@ -12,8 +12,8 @@
   font-family: 'JetBrains Mono', monospace;
 }
 html[data-theme='light'] .portfolio-home .home-cinematic-scene {
-  --scene-cyan: var(--palette-circuit-active, #176c7c);
-  --scene-glow: var(--palette-circuit-glow, #237f8d);
+  --scene-cyan: var(--palette-circuit-active, #2563EB);
+  --scene-glow: var(--palette-circuit-glow, #60A5FA);
   opacity: .66;
 }
 .portfolio-home .home-cinematic-scene * { box-sizing: border-box; }
@@ -22,7 +22,7 @@ html[data-theme='light'] .portfolio-home .home-cinematic-scene {
 .portfolio-home .home-cinematic-scene.is-paused *::after { animation-play-state: paused !important; }
 
 .portfolio-home .cinema-workspace,
-.portfolio-home .cinema-code { position: absolute; border: 1px solid color-mix(in srgb, var(--scene-cyan) 34%, transparent); background: var(--scene-panel); box-shadow: 0 14px 32px rgba(0,0,0,.13), inset 0 1px rgba(255,255,255,.05); backdrop-filter: blur(4px); }
+.portfolio-home .cinema-code { position: absolute; border: 1px solid color-mix(in srgb, var(--scene-cyan) 34%, transparent); background: var(--scene-panel); box-shadow: 0 14px 32px rgba(8, 15, 31, .13), inset 0 1px rgba(255, 255, 255, .05); backdrop-filter: blur(4px); }
 .portfolio-home .cinema-workspace { top: 5%; left: 3.2%; width: clamp(205px, 17vw, 250px); height: 157px; border-radius: 9px; opacity: .76; transform: perspective(600px) rotateY(7deg); }
 .portfolio-home .cinema-workspace-top,
 .portfolio-home .cinema-code-top { display: flex; align-items: center; gap: 9px; height: 27px; padding: 0 10px; border-bottom: 1px solid color-mix(in srgb, var(--scene-cyan) 25%, transparent); color: var(--theme-muted); font-size: 7px; letter-spacing: .09em; }
@@ -49,7 +49,7 @@ html[data-theme='light'] .portfolio-home .home-cinematic-scene {
 .portfolio-home .cinema-selection-handle--three { top: 69%; left: 8px; }
 .portfolio-home .cinema-selection-handle--four { top: 69%; left: 55%; }
 .portfolio-home .cinema-workspace-tools { display: grid; justify-items: center; align-content: start; gap: 9px; width: 20px; }
-.portfolio-home .cinema-color-wheel { width: 16px; height: 16px; border: 2px solid color-mix(in srgb, var(--scene-cyan) 35%, transparent); border-radius: 50%; background: conic-gradient(var(--scene-cyan), var(--scene-warm), #c279d2, var(--scene-cyan)); animation: cinema-wheel 8s ease-in-out infinite; }
+.portfolio-home .cinema-color-wheel { width: 16px; height: 16px; border: 2px solid color-mix(in srgb, var(--scene-cyan) 35%, transparent); border-radius: 50%; background: conic-gradient(var(--scene-cyan), var(--scene-warm), #2563EB, var(--scene-cyan)); animation: cinema-wheel 8s ease-in-out infinite; }
 .portfolio-home .cinema-workspace-tools i { width: 13px; height: 2px; background: var(--scene-cyan); opacity: .5; }
 .portfolio-home .cinema-workspace-bottom { display: flex; justify-content: space-between; padding: 0 10px; color: var(--theme-muted); font-size: 7px; letter-spacing: .08em; }
 .portfolio-home .cinema-workspace-bottom b { color: var(--scene-cyan); }
@@ -79,15 +79,15 @@ html[data-theme='light'] .portfolio-home .home-cinematic-scene {
 @keyframes cinema-cloud-traffic { to { stroke-dashoffset: -400; } }
 @keyframes cinema-status { 0%, 70%, 100% { opacity: .45; } 75%, 85% { opacity: 1; } }
 
-.portfolio-home .cinema-code { width: clamp(180px, 17vw, 242px); min-height: 128px; border-radius: 8px; background: rgba(7,23,31,.75); opacity: .69; }
+.portfolio-home .cinema-code { width: clamp(180px, 17vw, 242px); min-height: 128px; border-radius: 8px; background: rgba(15, 29, 54, .75); opacity: .69; }
 .portfolio-home .cinema-code--left { bottom: 6%; left: 17%; transform: perspective(600px) rotateY(6deg); }
 .portfolio-home .cinema-code--right { top: 7%; right: 5%; transform: perspective(600px) rotateY(-5deg); }
 .portfolio-home .cinema-code-body { padding: 9px 11px 7px; }
 .portfolio-home .cinema-code-line { display: flex; align-items: center; gap: 8px; min-height: 18px; white-space: nowrap; font-size: clamp(6px, .57vw, 8px); }
-.portfolio-home .cinema-code-line small { color: #668496; font-size: inherit; }
+.portfolio-home .cinema-code-line small { color: #60A5FA; font-size: inherit; }
 .portfolio-home .cinema-code-line code { color: #bfd5df; font: inherit; }
-.portfolio-home .cinema-code-line em { color: #b5a7ed; font-style: normal; }
-.portfolio-home .cinema-code-line b { color: #edb476; font-weight: 500; }
+.portfolio-home .cinema-code-line em { color: #60A5FA; font-style: normal; }
+.portfolio-home .cinema-code-line b { color: #2563EB; font-weight: 500; }
 .portfolio-home .cinema-code-line span { color: var(--scene-cyan); }
 .portfolio-home .cinema-code-line--typing code { display: inline-block; max-width: 0; overflow: hidden; border-right: 1px solid var(--scene-cyan); animation: cinema-code-type 8s steps(21) infinite; }
 .portfolio-home .cinema-code-success { margin: 9px 0 0 20px; color: var(--scene-cyan); font-size: 7px; letter-spacing: .08em; opacity: 0; animation: cinema-code-success 8s steps(1) infinite; }
@@ -149,7 +149,7 @@ html[data-theme='light'] .portfolio-home .home-cinematic-scene {
 .portfolio-home .cinema-workspace { top: 4%; left: 7.2%; width: clamp(200px, 12vw, 226px); }
 .portfolio-home .cinema-shield { top: 24%; left: 29%; opacity: .82; }
 .portfolio-home .cinema-cloud:not(.cinema-cloud--compact) { top: 20%; left: 18%; opacity: .38; }
-.portfolio-home .cinema-robot-cutout { position: absolute; left: -1%; bottom: clamp(120px, 19vh, 165px); width: clamp(240px, 22vw, 385px); height: auto; opacity: .91; filter: drop-shadow(0 13px 20px rgba(0,0,0,.35)); animation: cinema-robot-float 8s ease-in-out infinite; }
+.portfolio-home .cinema-robot-cutout { position: absolute; left: -1%; bottom: 0; width: clamp(240px, 22vw, 385px); height: auto; opacity: .91; filter: drop-shadow(0 13px 20px rgba(8, 15, 31, .35)); animation: cinema-robot-float 8s ease-in-out infinite; }
 @keyframes cinema-robot-float { 50% { transform: translateY(-6px); } }
 .portfolio-home .cinema-code--left { display: none; }
 .portfolio-home .cinema-code--right { top: 4.5%; right: 18%; width: clamp(180px, 12vw, 220px); opacity: .78; }

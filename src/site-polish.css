@@ -1,10 +1,10 @@
 :root {
-  --site-bg: #050816;
-  --site-blue: #3b82f6;
-  --site-cyan: #67e8f9;
+  --site-bg: #0F1D36;
+  --site-blue: #2563EB;
+  --site-cyan: #38BDF8;
   --site-white: #f1f5f9;
   --site-muted: #b7c7dc;
-  --site-rule: rgba(103, 232, 249, .18);
+  --site-rule: rgba(56, 189, 248, .18);
 }
 
 html { scroll-behavior: smooth; }
@@ -13,7 +13,7 @@ body { font-family: Inter, Arial, sans-serif; }
 .portfolio-empty-section {
   position: relative;
   min-height: 100svh;
-  background: #050816;
+  background: #0F1D36;
 }
 
 .portfolio-intro h1,
@@ -58,7 +58,7 @@ body { font-family: Inter, Arial, sans-serif; }
   width: 100%;
   padding: 30px clamp(24px, 5vw, 96px) 20px;
   border-top: 1px solid var(--site-rule);
-  background: #050816;
+  background: #0F1D36;
   color: var(--site-white);
 }
 .portfolio-footer-inner {
@@ -78,7 +78,7 @@ body { font-family: Inter, Arial, sans-serif; }
 .portfolio-footer nav a:hover,
 .portfolio-footer-top:hover { color: var(--site-cyan); }
 .portfolio-footer-top { display: inline-flex; align-items: center; justify-self: end; gap: 7px; white-space: nowrap; }
-.portfolio-footer-copyright { width: min(1600px, 100%); margin: 23px auto 0; padding-top: 14px; border-top: 1px solid rgba(103, 232, 249, .1); color: rgba(241,245,249,.51); font-size: 10px; letter-spacing: .02em; }
+.portfolio-footer-copyright { width: min(1600px, 100%); margin: 23px auto 0; padding-top: 14px; border-top: 1px solid rgba(56, 189, 248, .1); color: rgba(241, 245, 249, .51); font-size: 10px; letter-spacing: .02em; }
 
 .journey-gateway-content {
   display: grid;
@@ -92,12 +92,12 @@ body { font-family: Inter, Arial, sans-serif; }
   position: relative;
   width: min(740px, 100%);
   padding: clamp(28px, 4vw, 55px);
-  border: 1px solid rgba(103,232,249,.32);
+  border: 1px solid rgba(56, 189, 248, .32);
   border-radius: 14px;
-  background: linear-gradient(140deg, rgba(8,25,46,.89), rgba(5,8,22,.76));
-  box-shadow: inset 0 0 0 4px rgba(5,8,22,.18), 0 20px 60px rgba(0,0,0,.18);
+  background: linear-gradient(140deg, rgba(15, 29, 54, .89), rgba(15, 29, 54, .76));
+  box-shadow: inset 0 0 0 4px rgba(15, 29, 54, .18), 0 20px 60px rgba(8, 15, 31, .18);
 }
-.journey-gateway-panel::before { content: ''; position: absolute; top: 0; left: 25px; width: 72px; height: 2px; background: var(--site-cyan); box-shadow: 0 0 13px rgba(103,232,249,.58); }
+.journey-gateway-panel::before { content: ''; position: absolute; top: 0; left: 25px; width: 72px; height: 2px; background: var(--site-cyan); box-shadow: 0 0 13px rgba(56, 189, 248, .58); }
 .journey-gateway-panel > svg { color: var(--site-cyan); }
 .journey-gateway-panel > p { margin: 24px 0 13px; color: var(--site-cyan); font-size: 11px; letter-spacing: .17em; }
 .journey-gateway-panel h1 { margin: 0 0 18px; color: var(--site-white); font-size: clamp(38px, 5vw, 69px); line-height: 1.06; letter-spacing: -.05em; }
@@ -107,18 +107,18 @@ body { font-family: Inter, Arial, sans-serif; }
 
 .about-page.about-orbital[data-theme='light'] .galaxy-navigation.is-scrolled,
 .about-page.about-orbital[data-theme='light'] .galaxy-navigation .gooey-nav--framed {
-  background: rgba(248,252,255,.94);
-  border-color: rgba(37,99,235,.2);
+  background: rgba(248, 252, 255, .94);
+  border-color: rgba(37, 99, 235, .2);
 }
-.about-page.about-orbital[data-theme='light'] .navigation-brand { color: #14213d; }
+.about-page.about-orbital[data-theme='light'] .navigation-brand { color: #0F1D36; }
 .about-page.about-orbital[data-theme='light'] .navigation-brand span { color: #2563eb; }
-.about-page.about-orbital[data-theme='light'] .navigation-notice { background: #fff; color: #14213d; }
-.about-page.about-orbital[data-theme='light'] .portfolio-footer { background: #f7faff; color: #14213d; border-color: rgba(37,99,235,.2); }
+.about-page.about-orbital[data-theme='light'] .navigation-notice { background: #fff; color: #0F1D36; }
+.about-page.about-orbital[data-theme='light'] .portfolio-footer { background: #f7faff; color: #0F1D36; border-color: rgba(37, 99, 235, .2); }
 .about-page.about-orbital[data-theme='light'] .portfolio-footer-brand,
 .about-page.about-orbital[data-theme='light'] .portfolio-footer nav a,
-.about-page.about-orbital[data-theme='light'] .portfolio-footer-top { color: #14213d; }
+.about-page.about-orbital[data-theme='light'] .portfolio-footer-top { color: #0F1D36; }
 .about-page.about-orbital[data-theme='light'] .portfolio-footer-identity p,
-.about-page.about-orbital[data-theme='light'] .portfolio-footer-copyright { color: #52647d; }
+.about-page.about-orbital[data-theme='light'] .portfolio-footer-copyright { color: #2563EB; }
 .about-page.about-orbital[data-theme='light'] .portfolio-footer nav a:hover,
 .about-page.about-orbital[data-theme='light'] .portfolio-footer-top:hover { color: #2563eb; }
 

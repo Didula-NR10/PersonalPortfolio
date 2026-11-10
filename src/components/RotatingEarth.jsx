@@ -52,9 +52,10 @@ export default function RotatingEarth({ onReady, onUnavailable }) {
     };
 
     const animate = now => {
-      if (disposed || !renderer) return;
+      frame = 0;
+      if (disposed || !renderer || document.hidden) return;
       frame = requestAnimationFrame(animate);
-      if (document.hidden || now - lastFrame < (window.innerWidth < 700 ? 40 : 30)) return;
+      if (now - lastFrame < (window.innerWidth < 700 ? 40 : 30)) return;
       const elapsed = Math.min((now - lastTick) / 1000, 0.1);
       lastTick = now;
       lastFrame = now;
@@ -69,7 +70,11 @@ export default function RotatingEarth({ onReady, onUnavailable }) {
       }
     };
 
-    const onVisibility = () => { lastTick = performance.now(); };
+    const onVisibility = () => {
+      lastTick = performance.now();
+      if (document.hidden) { cancelAnimationFrame(frame); frame = 0; }
+      else if (!frame && renderer) frame = requestAnimationFrame(animate);
+    };
     const onContextLost = event => {
       event.preventDefault();
       cancelAnimationFrame(frame);
@@ -99,8 +104,6 @@ export default function RotatingEarth({ onReady, onUnavailable }) {
         camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 12000);
         camera.position.z = 5000;
         const geometry = new THREE.SphereGeometry(1, 64, 48);
-        const cloudGeometry = new THREE.SphereGeometry(1, 64, 48);
-        const atmosphereGeometry = new THREE.SphereGeometry(1, 64, 48);
         const surfaceMaterial = new THREE.MeshPhongMaterial({ map: dayMap, color: new THREE.Color('#93abc1'), shininess: 10, specular: new THREE.Color('#183f64') });
         const cloudMaterial = new THREE.MeshPhongMaterial({ map: cloudMap, transparent: true, opacity: 0.19, blending: THREE.AdditiveBlending, depthWrite: false });
         const atmosphereMaterial = new THREE.ShaderMaterial({
@@ -111,10 +114,10 @@ export default function RotatingEarth({ onReady, onUnavailable }) {
           vertexShader: 'varying vec3 vNormal; varying vec3 vView; void main(){ vec4 viewPos=modelViewMatrix*vec4(position,1.0); vNormal=normalize(normalMatrix*normal); vView=normalize(-viewPos.xyz); gl_Position=projectionMatrix*viewPos; }',
           fragmentShader: 'varying vec3 vNormal; varying vec3 vView; void main(){ float rim=pow(1.0-max(dot(normalize(vNormal),normalize(vView)),0.0),5.0); gl_FragColor=vec4(0.22,0.49,0.82,rim*0.23); }'
         });
-        owned.push(geometry, cloudGeometry, atmosphereGeometry, surfaceMaterial, cloudMaterial, atmosphereMaterial);
+        owned.push(geometry, surfaceMaterial, cloudMaterial, atmosphereMaterial);
         earth = new THREE.Mesh(geometry, surfaceMaterial);
-        clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
-        atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+        clouds = new THREE.Mesh(geometry, cloudMaterial);
+        atmosphere = new THREE.Mesh(geometry, atmosphereMaterial);
         earth.rotation.set(0.12, 2.3, -0.07);
         clouds.rotation.copy(earth.rotation);
         scene.add(earth, clouds, atmosphere);
@@ -125,7 +128,7 @@ export default function RotatingEarth({ onReady, onUnavailable }) {
         resize();
         window.addEventListener('resize', resize);
         document.addEventListener('visibilitychange', onVisibility);
-        frame = requestAnimationFrame(animate);
+        if (!document.hidden) frame = requestAnimationFrame(animate);
       } catch {
         if (!disposed) onUnavailable?.();
       }
